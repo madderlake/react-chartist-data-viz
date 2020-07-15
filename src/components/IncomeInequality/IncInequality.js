@@ -17,7 +17,7 @@ const IncomeInequalityChart = () => {
     axisX: { offset: 60, onlyInteger: false },
     axisY: {
       offset: 80,
-      labelInterpolationFnc: function(value) {
+      labelInterpolationFnc: function (value) {
         return addCommas(value);
       },
       labelOffset: { x: -10, y: 8 },
@@ -32,7 +32,7 @@ const IncomeInequalityChart = () => {
       {
         axisX: {
           labelOffset: { x: 0, y: 6 },
-          labelInterpolationFnc: function(value, index) {
+          labelInterpolationFnc: function (value, index) {
             return "'" + value.substring(2);
           }
         },
@@ -40,8 +40,7 @@ const IncomeInequalityChart = () => {
           //type: ChartistGraph.AutoScaleAxis,
           offset: 45,
           labelOffset: { x: 0 },
-          labelInterpolationFnc: function(value) {
-            //return index % 4 === 0 ? 'W' + value : null;
+          labelInterpolationFnc: function (value) {
             return value / 1000 + 'K';
           }
         }
@@ -49,30 +48,21 @@ const IncomeInequalityChart = () => {
     ]
   ];
   const type = 'Line';
-  //const [activeKeys, setActiveKeys] = useState([]);
-  // const toggle = key => {
-  //   !activeKeys.includes(key)
-  //     ? setActiveKeys(activeKeys.concat(key))
-  //     : setActiveKeys(activeKeys.filter(item => item !== key));
-  // };
 
   useEffect(() => {
-    //turn over dom interaction / changes to vanilla js cuz can't access svg nodes easily from React
+    /* until I am able to reference the svg elements directly - WIP */
     const key = document.querySelectorAll('.key');
 
-    key.forEach(
-      (key, i) => {
-        key.addEventListener('click', function() {
-          key.classList.toggle('active');
-          const series = document.querySelectorAll('.ct-series');
-          const lines = series[i].querySelectorAll('.ct-line');
-          const points = series[i].querySelectorAll('.ct-point');
-          lines.forEach(line => line.classList.toggle('visible'));
-          points.forEach(point => point.classList.toggle('visible'));
-        });
-      }
-      // [ChartistGraph]
-    );
+    key.forEach((key, i) => {
+      key.addEventListener('click', function () {
+        key.classList.toggle('active');
+        const series = document.querySelectorAll('.ct-series');
+        const lines = series[i].querySelectorAll('.ct-line');
+        const points = series[i].querySelectorAll('.ct-point');
+        lines.forEach(line => line.classList.toggle('visible'));
+        points.forEach(point => point.classList.toggle('visible'));
+      });
+    });
   });
   return (
     <div>
@@ -82,7 +72,6 @@ const IncomeInequalityChart = () => {
           options={options}
           responsiveOptions={responsiveOptions}
           type={type}
-          //activeKeys={activeKeys}
         />
       </Container>
       <Container className="legend-wrap">
@@ -92,13 +81,7 @@ const IncomeInequalityChart = () => {
               <div
                 key={`k${i}`}
                 data-index={i}
-                // onClick={() => {
-                //   toggle(i);
-                // }}
-                className={classnames(
-                  `key key-${i}`
-                  //activeKeys.includes(i) ? 'active' : ''
-                )}
+                className={classnames(`key key-${i}`)}
               >
                 <svg className="checkbox" width="20" height="20">
                   <rect width="20" height="20" />
