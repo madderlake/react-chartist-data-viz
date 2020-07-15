@@ -6,7 +6,6 @@ import { addCommas, strToNum } from '../../components/utilities/Helpers';
 import { Container, Row } from 'reactstrap';
 import '../../../node_modules/chartist/dist/chartist.css';
 import './index.css';
-//import chartistPluginAxisTitle from 'chartist-plugin-axistitle';
 
 const IncomeInequalityChart = () => {
   const options = {
@@ -37,7 +36,6 @@ const IncomeInequalityChart = () => {
           }
         },
         axisY: {
-          //type: ChartistGraph.AutoScaleAxis,
           offset: 45,
           labelOffset: { x: 0 },
           labelInterpolationFnc: function (value) {
