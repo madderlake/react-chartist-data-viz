@@ -4,11 +4,11 @@
 
 As part of a larger initiative at Cengage - to upgrade processes and deliverables around digital learning products - I was tasked with tackling how charts and graphs are handled.
 
-Because the internal creative team had been largely focused on print for many years, charts and graphs were developed as print assets, specifically Illustrator files. The data was set up in the file and designers updated the look and feel. This meant of course that when data needed to be updated, it went back to the designer. Ultimately an SVG element was rendered on the "page" in the digital learning platform.
+Because the internal creative team had been largely focused on print for many years, charts and graphs were developed as print assets, specifically Illustrator files. The data was set up in the file and designers updated the design to accommodate the data. When data needed to be updated, it went back to the designer. The final output from the source file was an SVG. So why not separate the data from the presentation with a graphing library?
 
 ## The Solution
 
-After some research, I decided to use a charting application - Chartist - that was compatible (output in svg - not canvas, and lightweight) with the Cengage learning platform.
+After some research, I decided to use a charting application - Chartist - that was compatible (output in svg - not canvas, and lightweight) with the Cengage learning platform. It is based on, albeit a subset of d3.js.
 
 The data was converted from csv to json, using a converter, and processed with javascript to be organized as required by Chartist.
 
