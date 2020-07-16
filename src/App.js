@@ -1,7 +1,7 @@
 import React from 'react';
 //import logo from './logo.svg';
 import './App.scss';
-import IncomeInequalityChart2 from './components/IncomeInequality2/IncInequality';
+import IncomeInequalityChart2 from './components/IncomeInequality/IncInequality';
 
 function App() {
   return (

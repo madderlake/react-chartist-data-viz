@@ -186,10 +186,10 @@ h3 {
 // }
 
 /* Chart */
-.ct-line,
-.ct-point {
-  visibility: hidden;
-}
+// .ct-line,
+// .ct-point {
+//   visibility: hidden;
+// }
 
 .visible {
   visibility: visible !important;
@@ -229,7 +229,13 @@ h3 {
   stroke-dasharray: 0;
   stroke: rgba(111, 107, 90, 0.6);
 }
+.ct-series {
+  visibility: hidden;
 
+  &.visible {
+    visibility: visible;
+  }
+}
 .ct-series .ct-line {
   stroke-width: 3px;
 }
@@ -237,38 +243,40 @@ h3 {
 .ct-series .ct-point {
   stroke-width: 7.5px;
 }
-
+/*  Combined */
 .ct-series-a .ct-line,
 .ct-series-a .ct-point {
   stroke: $purple;
 }
 
-/*  All Families - Purple */
+/*  White  */
 .ct-series-b .ct-line,
 .ct-series-b .ct-point {
   stroke: #af4e0b;
 }
 
-/*  White - Rust */
+/*  Black */
 .ct-series-c .ct-line,
 .ct-series-c .ct-point {
   stroke: #9e005d;
 }
 
-/*  Black - Berry */
+/*  Hispanic  */
 .ct-series-d .ct-line,
 .ct-series-d .ct-point {
   stroke: #00819f;
 }
 
-/*  Hispanic - Teal */
+/*  Asian / Pacific  */
 .ct-series-e .ct-line,
 .ct-series-e .ct-point {
   stroke: #060;
 }
-
-/*  Asian / Pacific - Green */
-.ct-series .ct-line.visible {
+.ct-series.visible .ct-line,
+.ct-series.visible .ct-point {
+  visibility: visible;
+}
+.ct-series.animate .ct-line {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
   animation: dash 3s linear forwards;
