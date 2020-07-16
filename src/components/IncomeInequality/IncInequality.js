@@ -1,13 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ChartistGraph from 'react-chartist';
 import classnames from 'classnames';
-import { data, keys } from './data/inc-ineq-functions';
-import { addCommas, strToNum } from '../../components/utilities/Helpers';
+import { data, keys } from '../IncomeInequality/data/inc-ineq-functions';
+import { addCommas } from '../utilities/Helpers';
 import { Container, Row } from 'reactstrap';
 import '../../../node_modules/chartist/dist/chartist.css';
-import './index.css';
+import './index.scss';
 
 const IncomeInequalityChart = () => {
+  const dataRefs = useRef([]);
+  const [activeKeys, setActiveKeys] = useState([]);
+  const [currKey, setCurrKey] = useState(null);
+
   const options = {
     width: '100%',
     height: 320,
@@ -47,49 +51,97 @@ const IncomeInequalityChart = () => {
   ];
   const type = 'Line';
 
-  useEffect(() => {
-    /* until I am able to reference the svg elements directly - WIP */
-    const key = document.querySelectorAll('.key');
+  const toggle = key => {
+    setCurrKey(key);
+    if (!activeKeys.includes(key)) {
+      setActiveKeys(activeKeys.concat(key));
+    } else {
+      setActiveKeys(activeKeys.filter(item => item !== key));
+      setCurrKey(null);
+    }
+  };
 
-    key.forEach((key, i) => {
-      key.addEventListener('click', function () {
-        key.classList.toggle('active');
-        const series = document.querySelectorAll('.ct-series');
-        const lines = series[i].querySelectorAll('.ct-line');
-        const points = series[i].querySelectorAll('.ct-point');
-        lines.forEach(line => line.classList.toggle('visible'));
-        points.forEach(point => point.classList.toggle('visible'));
+  const onDrawHandler = data => {
+    if (data.type === 'grid' && data.index === 0) {
+      data.element.addClass('axis');
+    }
+    if (
+      data.type === 'line' &&
+      data.group._node.classList.contains('ct-series')
+    ) {
+      data.group._node.setAttribute(
+        'ref',
+        (dataRefs.current[data.index] = data.group._node)
+      );
+    }
+  };
+
+  useEffect(() => {
+    if (dataRefs.current) {
+      dataRefs.current.forEach((item, i) => {
+        if (activeKeys.includes(i)) {
+          item.classList.add('visible');
+        } else {
+          item.classList.remove('visible');
+          item.classList.remove('animate');
+        }
       });
-    });
-  });
+    }
+  }, [activeKeys]);
+  useEffect(() => {
+    if (dataRefs.current) {
+      dataRefs.current.forEach((item, i) => {
+        if (currKey === i) {
+          item.classList.add('animate');
+        } else {
+          item.classList.remove('animate');
+        }
+      });
+    }
+  }, [currKey]);
+
   return (
     <div>
-      <Container>
-        <ChartistGraph
-          data={data}
-          options={options}
-          responsiveOptions={responsiveOptions}
-          type={type}
-        />
-      </Container>
-      <Container className="legend-wrap">
-        <Row className="justify-content-between">
-          {keys.map((key, i) => {
-            return (
-              <div
-                key={`k${i}`}
-                data-index={i}
-                className={classnames(`key key-${i}`)}
-              >
-                <svg className="checkbox" width="20" height="20">
-                  <rect width="20" height="20" />
-                </svg>
-                {key}
-              </div>
-            );
-          })}
-        </Row>
-      </Container>
+      <section>
+        <Container>
+          <h2 className={`text-center py-2`}>
+            {' '}
+            Income Inequality in the U.S.A 1991 - 2013
+          </h2>
+          <ChartistGraph
+            data={data}
+            options={options}
+            responsiveOptions={responsiveOptions}
+            type={type}
+            listener={{ draw: e => onDrawHandler(e) }}
+            activeKeys={activeKeys}
+          />
+        </Container>
+        <Container className="legend-wrap">
+          <Row className="justify-content-between">
+            {keys.map((key, i) => {
+              return (
+                <div
+                  key={`k${i}`}
+                  data-index={i}
+                  onClick={() => {
+                    toggle(i);
+                  }}
+                  className={classnames(
+                    `key key-${i}`,
+                    activeKeys.includes(i) ? 'active' : ''
+                  )}
+                >
+                  <svg className="checkbox" width="20" height="20">
+                    <rect width="20" height="20" />
+                  </svg>
+                  {key}
+                </div>
+              );
+            })}
+          </Row>
+        </Container>
+      </section>
     </div>
   );
 };
