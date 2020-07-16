@@ -1,6 +1,6 @@
 import React from 'react';
 //import logo from './logo.svg';
-import './App.scss';
+import './App.css';
 import IncomeInequalityChart2 from './components/IncomeInequality/IncInequality';
 
 function App() {

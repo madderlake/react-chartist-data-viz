@@ -5,7 +5,7 @@ import { data, keys } from '../IncomeInequality/data/inc-ineq-functions';
 import { addCommas } from '../utilities/Helpers';
 import { Container, Row } from 'reactstrap';
 import '../../../node_modules/chartist/dist/chartist.css';
-import './index.scss';
+import './index.css';
 
 const IncomeInequalityChart = () => {
   const dataRefs = useRef([]);
