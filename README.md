@@ -14,7 +14,7 @@ The data was converted from csv to json, using a converter, and processed with j
 
 Originally these were delivered as html, css and JS, but later I began to convert them to React components. Currently, I am updating them to use functional components, hooks, and refs.
 ### Demo
-https://chartist-projects.netlify.app/
+https://chartist-react-projects.netlify.app/
 
 ### TO DO's
 
