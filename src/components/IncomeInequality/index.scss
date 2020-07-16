@@ -1,20 +1,19 @@
-$taupe: #6f6b5a;
+$gray: #777;
 $purple: #3f1168;
+$blue: rgba(dodgerblue, 0.8);
+$gold: goldenrod;
+$turquoise: #00819f;
+$green: #060;
 
 body {
   font-size: 100%;
   font-family: 'ProximaNova', Helvetica, sans-serif;
-  color: $taupe;
+  color: $gray;
   height: 100%;
 }
 
-// .container,
-// .overlay {
-//   // max-width: 700px;
-// }
-
 h1 {
-  color: $taupe;
+  color: $gray;
   font-weight: 800;
   font-size: 1.75em;
   margin-bottom: 0;
@@ -39,73 +38,10 @@ h3 {
   display: none !important;
 }
 
-// .overlay {
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 150%;
-//   background-color: rgba(0, 0, 0, 0.5);
-//   cursor: pointer;
-//   z-index: 10;
-//   /* 		display:none; */
-// }
-
-// .overlay .prompt {
-//   width: 40%;
-//   text-align: center;
-//   color: #fff;
-//   margin: 15% auto;
-//   font-size: 1.25em;
-//   /* 		border: 2px solid white; */
-//   border-radius: 10px;
-//   background-color: $taupe;
-//   padding: 0.5em;
-// }
-
-// .legend-wrap {
-//   position: relative;
-//   width: 82%;
-//   /* 	 	padding: .5em; */
-//   margin: -1.5em auto 0.5em;
-// }
-
-// .table {
-//   display: table;
-//   width: 80%;
-//   border-collapse: collapse;
-//   border: 1px solid $taupe;
-//   margin: 0 auto;
-// }
-
-// .table-row {
-//   display: table-row;
-// }
-
-// .tc {
-//   display: table-cell;
-//   padding: 0.5em;
-//   /*       width: auto; */
-//   min-width: 33.3333333%;
-// }
-
-// .tc a {
-//   text-decoration: none;
-// }
-
-// .tc a.active {
-//   font-weight: 700;
-//   font-style: italic;
-// }
-
-// .tc .footnote {
-//   font-size: 0.75em;
-// }
-
 .source a {
   text-decoration: none;
   font-size: 0.85em;
-  color: $taupe;
+  color: $gray;
 }
 
 .source a:hover,
@@ -114,83 +50,6 @@ h3 {
   color: blue;
 }
 
-// .all {
-//   color: $purple;
-// }
-
-// .white {
-//   color: #af4e0b;
-// }
-
-// .black {
-//   color: #9e005d;
-// }
-
-// .hisp {
-//   color: #00819f;
-// }
-
-// .asian {
-//   color: #060;
-// }
-
-// a svg {
-//   display: inline-block;
-//   vertical-align: text-bottom;
-//   margin-right: 0.5em;
-// }
-
-// a .checkbox rect {
-//   stroke-width: 5;
-//   fill: #fff;
-// }
-
-// a.all .checkbox rect {
-//   stroke: $purple !important;
-// }
-
-// a.all.active .checkbox rect {
-//   fill: $purple !important;
-// }
-
-// a.white .checkbox rect {
-//   stroke: #af4e0b !important;
-// }
-
-// a.white.active .checkbox rect {
-//   fill: #af4e0b !important;
-// }
-
-// a.black .checkbox rect {
-//   stroke: #9e005d !important;
-// }
-
-// a.black.active .checkbox rect {
-//   fill: #9e005d !important;
-// }
-
-// a.hisp .checkbox rect {
-//   stroke: #00819f !important;
-// }
-
-// a.hisp.active .checkbox rect {
-//   fill: #00819f !important;
-// }
-
-// a.asian .checkbox rect {
-//   stroke: #060 !important;
-// }
-
-// a.asian.active .checkbox rect {
-//   fill: #060 !important;
-// }
-
-/* Chart */
-// .ct-line,
-// .ct-point {
-//   visibility: hidden;
-// }
-
 .visible {
   visibility: visible !important;
 }
@@ -198,8 +57,8 @@ h3 {
 .ct-label,
 .ct-axis-title {
   font-family: 'Roboto';
-  color: $taupe;
-  fill: $taupe;
+  color: $gray;
+  fill: $gray;
   font-size: 0.9em;
 }
 
@@ -221,11 +80,11 @@ h3 {
 }
 
 .ct-grid .ct-vertical {
-  stroke: rgba(111, 107, 90, 0.33);
+  stroke: rgba($gray, 0.33);
 }
 
 .ct-grid.axis {
-  stroke-width: 3;
+  stroke-width: 2;
   stroke-dasharray: 0;
   stroke: rgba(111, 107, 90, 0.6);
 }
@@ -241,7 +100,7 @@ h3 {
 }
 
 .ct-series .ct-point {
-  stroke-width: 7.5px;
+  stroke-width: 6.5px;
 }
 /*  Combined */
 .ct-series-a .ct-line,
@@ -253,18 +112,19 @@ h3 {
 .ct-series-b .ct-line,
 .ct-series-b .ct-point {
   stroke: #af4e0b;
+  stroke: $blue;
 }
 
 /*  Black */
 .ct-series-c .ct-line,
 .ct-series-c .ct-point {
-  stroke: #9e005d;
+  stroke: $gold;
 }
 
 /*  Hispanic  */
 .ct-series-d .ct-line,
 .ct-series-d .ct-point {
-  stroke: #00819f;
+  stroke: $turquoise;
 }
 
 /*  Asian / Pacific  */
@@ -318,21 +178,21 @@ h3 {
   }
   .key-1 {
     .checkbox rect {
-      stroke: #af4e0b;
+      stroke: $blue;
     }
     &.active {
       .checkbox rect {
-        fill: #af4e0b;
+        fill: $blue;
       }
     }
   }
   .key-2 {
     .checkbox rect {
-      stroke: #9e005d;
+      stroke: goldenrod;
     }
     &.active {
       .checkbox rect {
-        fill: #9e005d;
+        fill: goldenrod;
       }
     }
   }
