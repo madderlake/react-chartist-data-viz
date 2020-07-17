@@ -1,23 +1,20 @@
-//import { strToNum } from '../../utilities/Helpers';
-import { crData } from './inc-ineq-data';
-
-//Set up the data for the chart...
-
+import fedData from './federalism-data';
+import { strToNum } from '../../utilities/Helpers';
 const series = [],
   newArr = [];
 let labelArr;
 
-for (let k in crData) {
-  const arr = Object.values(crData[k]);
+for (let k in fedData) {
+  const arr = Object.values(fedData[k]);
 
-  labelArr = Object.keys(crData[k]);
+  labelArr = Object.keys(fedData[k]);
 
   arr.map((item, i) => {
-    return newArr.push({ meta: k, value: item });
+    return newArr.push({ meta: k, value: strToNum(item) });
   });
 }
 const labels = [...new Set(labelArr)];
-const keys = Object.keys(crData);
+const keys = Object.keys(fedData);
 
 const result = newArr.reduce((r, o) => {
   const k = o.meta;

@@ -1,15 +1,17 @@
 import React from 'react';
 //import logo from './logo.svg';
-import './App.css';
-import IncomeInequalityChart2 from './components/IncomeInequality/IncInequality';
+import './styles/styles.css';
+import FederalismChart from './components/Federalism/Federalism';
+import IncomeInequalityChart from './components/IncomeInequality/IncInequality';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1> Cengage Data Projects 2018 - 2019</h1>
+        <h1> Cengage Chart Projects 2018 - 2019</h1>
       </header>
-      <IncomeInequalityChart2 />
+      <IncomeInequalityChart />
+      <FederalismChart />
     </div>
   );
 }

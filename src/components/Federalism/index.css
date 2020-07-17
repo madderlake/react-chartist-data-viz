@@ -1,0 +1,137 @@
+/* Chartist Colors */
+.federalism {
+  /* Customize the Community bars, since they are the shortest and rise too slowly */ }
+  .federalism .ct-chart {
+    position: relative;
+    margin-top: 2.5rem;
+    margin: 2.5rem auto; }
+  .federalism .legend-wrap {
+    position: relative;
+    padding: 0 0.5em; }
+  .federalism .legend {
+    display: flex;
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-left: 2em; }
+  .federalism .key-wrap {
+    display: flex;
+    margin: 1rem auto; }
+    .federalism .key-wrap button {
+      border: none;
+      background-color: transparent;
+      height: 3rem;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      appearance: none;
+      outline: none; }
+      .federalism .key-wrap button i {
+        display: block;
+        width: 4rem;
+        height: 4rem;
+        background-size: 90%;
+        background-position: center center;
+        background-repeat: no-repeat; }
+        .federalism .key-wrap button i.transportation {
+          background-image: url("./icons/3-transportation.svg"); }
+          .federalism .key-wrap button i.transportation.on {
+            background-image: url("./icons/3-transportation-on.svg"); }
+        .federalism .key-wrap button i.community-dev {
+          background-image: url("./icons/4-community-dev.svg"); }
+          .federalism .key-wrap button i.community-dev.on {
+            background-image: url("./icons/4-community-dev-on.svg"); }
+        .federalism .key-wrap button i.health {
+          background-image: url("./icons/6-health.svg"); }
+          .federalism .key-wrap button i.health.on {
+            background-image: url("./icons/6-health-on.svg"); }
+        .federalism .key-wrap button i.income-security {
+          background-image: url("./icons/7-income-security.svg"); }
+          .federalism .key-wrap button i.income-security.on {
+            background-image: url("./icons/7-income-security-on.svg"); }
+  .federalism .source {
+    margin: 2rem auto;
+    display: block; }
+    .federalism .source a {
+      text-decoration: none;
+      color: inherit; }
+      .federalism .source a:hover {
+        color: initial; }
+  .federalism .visible {
+    visibility: visible !important; }
+  .federalism .ct-label,
+  .federalism .ct-axis-title {
+    color: #777;
+    fill: #777; }
+  .federalism .ct-axis-title {
+    font-size: 0.75rem; }
+  .federalism .ct-series {
+    visibility: hidden; }
+    .federalism .ct-series.visible {
+      visibility: visible; }
+  .federalism .ct-label-top {
+    font-size: 0.75rem; }
+  .federalism .ct-arrow,
+  .federalism .ct-label-top {
+    opacity: 0; }
+  .federalism .ct-series.visible .ct-arrow,
+  .federalism .ct-series.visible .ct-label-top {
+    opacity: 1; }
+  .federalism .ct-series.animate .ct-arrow,
+  .federalism .ct-series.animate .ct-label-top {
+    opacity: 1;
+    transition: opacity 1s linear 1.5s; }
+  .federalism .ct-label-top.visible {
+    opacity: 1;
+    transition: opacity 1s linear 1.8s; }
+  .federalism .ct-series.animate .ct-bar {
+    transform: scaleY(0);
+    transform-origin: 100% 84%;
+    animation: draw 1.5s linear forwards; }
+  .federalism .ct-series-b.animate .ct-bar {
+    animation: draw 0.5s linear forwards; }
+
+@keyframes draw {
+  to {
+    transform: scaleY(1); } }
+
+/* Tooltips */
+.ct-tooltip {
+  position: absolute;
+  background: #fff;
+  border: 1px solid #6f6b5a;
+  border-radius: 0.5em;
+  color: #6f6b5a;
+  font-size: 0.75em;
+  padding: 0.25rem 0.5rem;
+  text-align: center;
+  visibility: hidden; }
+  .ct-tooltip.tooltip-show {
+    visibility: visible; }
+
+.ct-tooltip:before,
+.ct-tooltip:after {
+  content: '\0020';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  margin-left: -15px;
+  border: 15px solid transparent;
+  border-top-color: #fff;
+  z-index: 2; }
+
+.ct-tooltip:after {
+  content: '';
+  top: 102%;
+  z-index: 1;
+  border-top-color: #6f6b5a; }
+
+.ct-tooltip.tooltip-show {
+  opacity: 1; }
+
+.ct-area,
+.ct-line {
+  pointer-events: none; }

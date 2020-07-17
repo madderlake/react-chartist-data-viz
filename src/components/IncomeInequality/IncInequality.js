@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ChartistGraph from 'react-chartist';
 import classnames from 'classnames';
-import { data, keys } from '../IncomeInequality/data/inc-ineq-functions';
+import { data, keys } from '../IncomeInequality/data/inc-ineq-data-proc';
 import { addCommas } from '../utilities/Helpers';
 import { Container, Row } from 'reactstrap';
-import '../../../node_modules/chartist/dist/chartist.css';
 import './index.css';
 
 const IncomeInequalityChart = () => {
@@ -101,7 +100,7 @@ const IncomeInequalityChart = () => {
   }, [currKey]);
 
   return (
-    <div>
+    <div className={`income-inequality`}>
       <section>
         <Container>
           <h2 className={`text-center py-2`}>
