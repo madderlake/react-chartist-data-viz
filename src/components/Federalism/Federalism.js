@@ -166,7 +166,7 @@ const FederalismChart = () => {
 
   return (
     <div className={`federalism`}>
-      <Row tag={`section`}>
+      <section>
         <Container>
           <h2 className={`text-center py-2`}> Federal Support for States</h2>
           <ChartistGraph
@@ -216,7 +216,7 @@ const FederalismChart = () => {
             </small>
           </small>
         </Container>
-      </Row>
+      </section>
     </div>
   );
 };
