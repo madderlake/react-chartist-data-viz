@@ -1,5 +1,4 @@
 import React from 'react';
-//import logo from './logo.svg';
 import './styles/styles.css';
 import FederalismChart from './components/Federalism/Federalism';
 import IncomeInequalityChart from './components/IncomeInequality/IncInequality';
