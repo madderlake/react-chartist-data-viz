@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import { data, keys } from '../IncomeInequality/data/inc-ineq-data-proc';
 import { addCommas } from '../utilities/Helpers';
 import { Container, Row } from 'reactstrap';
-import { useUpdateDataStyles } from '../../hooks/useUpdateDataStyles';
+import { useUpdateDataStyles } from '../../hooks';
 import './index.css';
 
 const IncomeInequalityChart = props => {
