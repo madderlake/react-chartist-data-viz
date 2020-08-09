@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import ChartistGraph from 'react-chartist';
 import classnames from 'classnames';
 import { data, keys } from '../IncomeInequality/data/inc-ineq-data-proc';
