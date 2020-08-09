@@ -6,8 +6,8 @@ import { data, keys } from './data/federalism-data-proc';
 import { addCommas } from '../utilities/Helpers';
 import { Container, Row, Col } from 'reactstrap';
 import ChartistTooltip from 'chartist-plugin-tooltips-updated';
-import './index.css';
 import { useUpdateDataStyles } from '../../hooks/useUpdateDataStyles';
+import './index.css';
 
 const FederalismChart = props => {
   const dataRefs = useRef([]);
