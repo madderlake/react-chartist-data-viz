@@ -4,13 +4,31 @@ import classnames from 'classnames';
 import { data, keys } from '../IncomeInequality/data/inc-ineq-data-proc';
 import { addCommas } from '../utilities/Helpers';
 import { Container, Row } from 'reactstrap';
+import { useUpdateDataStyles } from '../../hooks/useUpdateDataStyles';
 import './index.css';
 
-const IncomeInequalityChart = () => {
+const IncomeInequalityChart = props => {
   const dataRefs = useRef([]);
-  const [activeKeys, setActiveKeys] = useState([]);
-  const [currKey, setCurrKey] = useState(null);
+  const [state, setState] = useState({
+    activeKeys: [],
+    currKey: null
+  });
 
+  const toggle = key => {
+    if (state.activeKeys) {
+      if (!state.activeKeys.includes(key)) {
+        setState({
+          activeKeys: [...state.activeKeys, key],
+          currKey: key
+        });
+      } else {
+        setState({
+          activeKeys: [...state.activeKeys].filter(item => item !== key),
+          currKey: null
+        });
+      }
+    }
+  };
   const options = {
     width: '100%',
     height: 320,
@@ -48,17 +66,6 @@ const IncomeInequalityChart = () => {
       }
     ]
   ];
-  const type = 'Line';
-
-  const toggle = key => {
-    setCurrKey(key);
-    if (!activeKeys.includes(key)) {
-      setActiveKeys(activeKeys.concat(key));
-    } else {
-      setActiveKeys(activeKeys.filter(item => item !== key));
-      setCurrKey(null);
-    }
-  };
 
   const onDrawHandler = data => {
     if (data.type === 'grid' && data.index === 0) {
@@ -74,30 +81,10 @@ const IncomeInequalityChart = () => {
       );
     }
   };
+  const activeKeys = state.activeKeys;
+  const currKey = state.currKey;
 
-  useEffect(() => {
-    if (dataRefs.current) {
-      dataRefs.current.forEach((item, i) => {
-        if (activeKeys.includes(i)) {
-          item.classList.add('visible');
-        } else {
-          item.classList.remove('visible');
-          item.classList.remove('animate');
-        }
-      });
-    }
-  }, [activeKeys]);
-  useEffect(() => {
-    if (dataRefs.current) {
-      dataRefs.current.forEach((item, i) => {
-        if (currKey === i) {
-          item.classList.add('animate');
-        } else {
-          item.classList.remove('animate');
-        }
-      });
-    }
-  }, [currKey]);
+  useUpdateDataStyles(dataRefs, activeKeys, currKey, 'visible', 'animate');
 
   return (
     <div className={`income-inequality`}>
@@ -111,9 +98,9 @@ const IncomeInequalityChart = () => {
             data={data}
             options={options}
             responsiveOptions={responsiveOptions}
-            type={type}
+            type={props.type}
             listener={{ draw: e => onDrawHandler(e) }}
-            activeKeys={activeKeys}
+            // activeKeys={state.activeKeys}
           />
         </Container>
         <Container className="legend-wrap">
@@ -128,7 +115,7 @@ const IncomeInequalityChart = () => {
                   }}
                   className={classnames(
                     `key key-${i}`,
-                    activeKeys.includes(i) ? 'active' : ''
+                    state.activeKeys.includes(i) ? 'active' : ''
                   )}
                 >
                   <svg className="checkbox" width="20" height="20">
@@ -144,5 +131,4 @@ const IncomeInequalityChart = () => {
     </div>
   );
 };
-
 export default IncomeInequalityChart;

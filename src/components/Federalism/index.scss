@@ -116,6 +116,7 @@
   .ct-arrow,
   .ct-label-top {
     opacity: 0;
+    transition: 1s opacity;
   }
   .ct-series.visible .ct-arrow,
   .ct-series.visible .ct-label-top {

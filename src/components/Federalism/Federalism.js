@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Chartist from 'chartist';
 import ChartistGraph from 'react-chartist';
 import classnames from 'classnames';
@@ -7,13 +7,15 @@ import { addCommas } from '../utilities/Helpers';
 import { Container, Row, Col } from 'reactstrap';
 import ChartistTooltip from 'chartist-plugin-tooltips-updated';
 import './index.css';
+import { useUpdateDataStyles } from '../../hooks/useUpdateDataStyles';
 
-const FederalismChart = () => {
+const FederalismChart = props => {
   const dataRefs = useRef([]);
-  //const graphRef = useRef(null);
-  const [activeKeys, setActiveKeys] = useState([]);
-  const [currKey, setCurrKey] = useState(null);
-  const type = 'Bar';
+
+  const [state, setState] = useState({
+    activeKeys: [],
+    currKey: null
+  });
 
   const options = {
     width: '100%',
@@ -54,63 +56,23 @@ const FederalismChart = () => {
       })
     ]
   };
-  //   const responsiveOptions = [
-  //     [
-  //       'screen and (max-width: 640px)',
-  //       {
-  //         axisX: {
-  //           labelOffset: { x: 0, y: 6 },
-  //           labelInterpolationFnc: function (value, index) {
-  //             return "'" + value.substring(2);
-  //           }
-  //         },
-  //         axisY: {
-  //           offset: 45,
-  //           labelOffset: { x: 0 },
-  //           labelInterpolationFnc: function (value) {
-  //             return value / 1000 + 'K';
-  //           }
-  //         }
-  //       }
-  //     ]
-  //   ];
 
   const toggle = key => {
-    setCurrKey(key);
-
-    if (!activeKeys.includes(key)) {
-      setActiveKeys(activeKeys.concat(key));
-    } else {
-      setActiveKeys(activeKeys.filter(item => item !== key));
-      setCurrKey(null);
+    if (state.activeKeys) {
+      if (!state.activeKeys.includes(key)) {
+        setState({
+          activeKeys: [...state.activeKeys, key],
+          currKey: key
+        });
+      } else {
+        setState({
+          activeKeys: [...state.activeKeys].filter(item => item !== key),
+          currKey: null
+        });
+      }
     }
   };
 
-  useEffect(() => {
-    if (dataRefs.current) {
-      console.log(dataRefs.current);
-      dataRefs.current.forEach((item, i) => {
-        if (activeKeys.includes(i)) {
-          item.classList.add('visible');
-        } else {
-          item.classList.remove('visible');
-          item.classList.remove('animate');
-        }
-      });
-    }
-  }, [activeKeys]);
-
-  useEffect(() => {
-    if (dataRefs.current) {
-      dataRefs.current.forEach((item, i) => {
-        if (currKey === i) {
-          item.classList.add('animate');
-        } else {
-          item.classList.remove('animate');
-        }
-      });
-    }
-  }, [currKey]);
   /* Chart Specific Handler */
   const onDrawHandler = data => {
     if (data.type === 'grid' && data.index === 0) {
@@ -150,6 +112,7 @@ const FederalismChart = () => {
             .elem('text', { x: x - 24, y: y - 25 }, 'ct-label-top')
             .text(customLabels[data.index]);
         }
+        console.log(customLabels[data.index]);
       }
     }
 
@@ -163,6 +126,10 @@ const FederalismChart = () => {
       );
     }
   };
+  const activeKeys = state.activeKeys;
+  const currKey = state.currKey;
+
+  useUpdateDataStyles(dataRefs, activeKeys, currKey, 'visible', 'animate');
 
   return (
     <div className={`federalism`}>
@@ -172,8 +139,7 @@ const FederalismChart = () => {
           <ChartistGraph
             data={data}
             options={options}
-            //responsiveOptions={responsiveOptions}
-            type={type}
+            type={props.type}
             listener={{ draw: e => onDrawHandler(e) }}
           />
         </Container>
@@ -197,7 +163,7 @@ const FederalismChart = () => {
                     <i
                       className={classnames(
                         `${key.toLowerCase().replace(/\s/g, '-')}`,
-                        activeKeys.includes(i) ? 'on' : ''
+                        state.activeKeys.includes(i) ? 'on' : ''
                       )}
                       key={`${i}`}
                     ></i>

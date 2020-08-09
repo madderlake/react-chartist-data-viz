@@ -74,7 +74,8 @@
     font-size: 0.75rem; }
   .federalism .ct-arrow,
   .federalism .ct-label-top {
-    opacity: 0; }
+    opacity: 0;
+    transition: 1s opacity; }
   .federalism .ct-series.visible .ct-arrow,
   .federalism .ct-series.visible .ct-label-top {
     opacity: 1; }

@@ -3,16 +3,16 @@ import './styles/styles.css';
 import FederalismChart from './components/Federalism/Federalism';
 import IncomeInequalityChart from './components/IncomeInequality/IncInequality';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <header className="App-header">
         <h1> Cengage Chart Projects 2018 - 2019</h1>
       </header>
-      <IncomeInequalityChart />
-      <FederalismChart />
+      <IncomeInequalityChart type={`Line`} />
+      <FederalismChart type={`Bar`} />
     </div>
   );
-}
+};
 
 export default App;
