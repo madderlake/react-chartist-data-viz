@@ -75,7 +75,7 @@
   .federalism .ct-arrow,
   .federalism .ct-label-top {
     opacity: 0;
-    transition: 1s opacity; }
+    transition: 1s fill-opacity; }
   .federalism .ct-series.visible .ct-arrow,
   .federalism .ct-series.visible .ct-label-top {
     opacity: 1; }
