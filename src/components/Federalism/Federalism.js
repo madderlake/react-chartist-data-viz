@@ -76,7 +76,11 @@ const FederalismChart = props => {
         axisX: {
           labelOffset: { x: 0, y: 6 },
           labelInterpolationFnc: function (value, index) {
-            return "'" + value.substring(2);
+            if (value > 2016) {
+              return "'" + value.substring(2) + '\n  (est)';
+            } else {
+              return "'" + value.substring(2);
+            }
           }
         },
         axisY: {
