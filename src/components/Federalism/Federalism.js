@@ -3,7 +3,7 @@ import Chartist from 'chartist';
 import ChartistGraph from 'react-chartist';
 import classnames from 'classnames';
 import { data, keys } from './data/federalism-data-proc';
-import { addCommas } from '../utilities/Helpers';
+import { strToNum } from '../utilities/Helpers';
 import { Container, Row, Col } from 'reactstrap';
 import ChartistTooltip from 'chartist-plugin-tooltips-updated';
 import { useUpdateDataStyles } from '../../hooks';
@@ -47,7 +47,6 @@ const FederalismChart = props => {
     axisY: {
       offset: 80,
       labelInterpolationFnc: function (value) {
-        //return addCommas(value);
         return '$' + value / 1000 + ' B';
       },
       labelOffset: { x: 0, y: 8 },
@@ -138,15 +137,13 @@ const FederalismChart = props => {
         );
         data.group.append(arrow);
         const customLabels = [];
-        customLabels[data.index] = addCommas(
-          Chartist.getMultiValue(data.value)
-        );
+        customLabels[data.index] = Chartist.getMultiValue(data.value);
         if (customLabels[data.index]) {
           const x = data.type === 'bar' ? data.x2 : data.x;
           const y = data.type === 'bar' ? data.y2 : data.y;
           data.group
-            .elem('text', { x: x - 24, y: y - 25 }, 'ct-label-top')
-            .text(customLabels[data.index]);
+            .elem('text', { x: x - 15, y: y - 25 }, 'ct-label-top')
+            .text('$' + strToNum(customLabels[data.index] / 1000) + ' B');
         }
         console.log(customLabels[data.index]);
       }
