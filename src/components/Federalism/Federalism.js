@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Chartist from 'chartist';
 import ChartistGraph from 'react-chartist';
 import classnames from 'classnames';
@@ -8,15 +8,26 @@ import { Container, Row, Col } from 'reactstrap';
 import ChartistTooltip from 'chartist-plugin-tooltips-updated';
 import { useUpdateDataStyles } from '../../hooks';
 import './index.css';
-
+// import ScrollAnimation from 'react-animate-on-scroll';
 const FederalismChart = props => {
   const dataRefs = useRef([]);
-
+  const scrollRef = useRef();
   const [state, setState] = useState({
     activeKeys: [],
     currKey: null
   });
-
+  const handleScroll = e => {
+    let verticalOffset = window.pageYOffset;
+    const componentOffset = e.target.body.querySelector('.federalism')
+      .offsetTop;
+    const buffer = 35;
+    if (componentOffset - verticalOffset < buffer) {
+      setState({
+        activeKeys: [...state.activeKeys, 0],
+        currKey: 0
+      });
+    }
+  };
   const options = {
     width: '100%',
     height: 380,
@@ -57,6 +68,27 @@ const FederalismChart = props => {
     ]
   };
 
+  const responsiveOptions = [
+    [
+      'screen and (max-width: 640px)',
+      {
+        width: '95%',
+        axisX: {
+          labelOffset: { x: 0, y: 6 },
+          labelInterpolationFnc: function (value, index) {
+            return "'" + value.substring(2);
+          }
+        },
+        axisY: {
+          offset: 40,
+          labelOffset: { x: 0 },
+          labelInterpolationFnc: function (value) {
+            return value / 1000 + 'K';
+          }
+        }
+      }
+    ]
+  ];
   const toggle = key => {
     if (state.activeKeys) {
       if (!state.activeKeys.includes(key)) {
@@ -130,15 +162,19 @@ const FederalismChart = props => {
   const currKey = state.currKey;
 
   useUpdateDataStyles(dataRefs, activeKeys, currKey, 'visible', 'animate');
-
+  useEffect(() => {
+    window.addEventListener('scroll', e => handleScroll(e));
+  });
   return (
-    <div className={`federalism`}>
+    <div className={`federalism`} ref={scrollRef} onScroll={handleScroll}>
       <section>
         <Container>
           <h2 className={`text-center py-2`}> Federal Support for States</h2>
+
           <ChartistGraph
             data={data}
             options={options}
+            responsiveOptions={responsiveOptions}
             type={props.type}
             listener={{ draw: e => onDrawHandler(e) }}
           />
@@ -154,7 +190,7 @@ const FederalismChart = props => {
                 <Col className={`key-wrap`} key={key} sm={12} md={6} lg={3}>
                   <button
                     key={`k${i}`}
-                    data-index={i}
+                    data-index={`btn-${i}`}
                     onClick={() => {
                       toggle(i);
                     }}

@@ -10,8 +10,8 @@ import './index.css';
 const IncomeInequalityChart = props => {
   const dataRefs = useRef([]);
   const [state, setState] = useState({
-    activeKeys: [],
-    currKey: null
+    activeKeys: [0],
+    currKey: 0
   });
 
   const toggle = key => {
@@ -29,6 +29,7 @@ const IncomeInequalityChart = props => {
       }
     }
   };
+
   const options = {
     width: '100%',
     height: 320,
@@ -80,10 +81,13 @@ const IncomeInequalityChart = props => {
         (dataRefs.current[data.index] = data.group._node)
       );
     }
+    if (data.group._node.classList.contains('ct-series-a')) {
+      data.group._node.classList.add('visible', 'animate');
+    }
   };
+
   const activeKeys = state.activeKeys;
   const currKey = state.currKey;
-
   useUpdateDataStyles(dataRefs, activeKeys, currKey, 'visible', 'animate');
 
   return (
@@ -99,8 +103,9 @@ const IncomeInequalityChart = props => {
             options={options}
             responsiveOptions={responsiveOptions}
             type={props.type}
-            listener={{ draw: e => onDrawHandler(e) }}
-            // activeKeys={state.activeKeys}
+            listener={{
+              draw: e => onDrawHandler(e)
+            }}
           />
         </Container>
         <Container className="legend-wrap">
