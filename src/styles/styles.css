@@ -3,12 +3,13 @@
 /* Chartist Colors */
 body {
   margin: 0;
+  background-color: white;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  color: #777;
+  color: #453d3f;
 }
 
 h1 {
-  color: #777;
+  color: #453d3f;
   font-size: 1.5em;
   margin-bottom: 0;
 }

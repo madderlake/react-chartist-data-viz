@@ -8,7 +8,7 @@ import { Container, Row, Col } from 'reactstrap';
 import ChartistTooltip from 'chartist-plugin-tooltips-updated';
 import { useUpdateDataStyles } from '../../hooks';
 import './index.css';
-// import ScrollAnimation from 'react-animate-on-scroll';
+
 const FederalismChart = (props) => {
   const dataRefs = useRef([]);
   const scrollRef = useRef();
@@ -16,16 +16,102 @@ const FederalismChart = (props) => {
     activeKeys: [],
     currKey: null,
   });
+  // const seriesKeys = Object.values(data.series).map((series) => series[0].meta);
+  const visibleClass = 'visible';
+  const animateClass = 'animate';
+
   const handleScroll = (e) => {
     let verticalOffset = window.scrollY;
     const componentOffset =
       e.target.body.querySelector('.federalism').offsetTop;
-    const buffer = 100;
+    const buffer = 35;
     if (componentOffset - verticalOffset < buffer) {
       setState({
         activeKeys: [...state.activeKeys, 0],
         currKey: 0,
       });
+    }
+  };
+  const toggle = (key) => {
+    if (state.activeKeys) {
+      if (!state.activeKeys.includes(key)) {
+        setState({
+          activeKeys: [...state.activeKeys, key],
+          currKey: key,
+        });
+      } else {
+        setState({
+          activeKeys: [...state.activeKeys].filter((item) => item !== key),
+          currKey: null,
+        });
+      }
+    }
+  };
+
+  const activeKeys = state.activeKeys;
+  const currKey = state.currKey;
+
+  useUpdateDataStyles(
+    dataRefs,
+    state.activeKeys,
+    state.currKey,
+    visibleClass,
+    animateClass
+  );
+
+  useEffect(() => {
+    window.addEventListener('scroll', (e) => handleScroll(e));
+  });
+
+  /* Chart Specific Handler */
+  const onDrawHandler = (data) => {
+    if (data.type === 'grid' && data.index === 0) {
+      data.element.addClass('axis');
+    }
+
+    if (data.type === 'bar') {
+      if (Chartist.getMultiValue(data.value) > 125000) {
+        const arrow = Chartist.Svg(
+          'path',
+          {
+            d: [
+              'M',
+              data.x1,
+              data.y2 - 13,
+              'L',
+              data.x2 - 13,
+              data.y2 + 1,
+              'L',
+              data.x2 + 13,
+              data.y2 + 1,
+              'z',
+            ].join(' '),
+            style: 'fill-opacity: 1 ; fill: #f4c63d',
+          },
+          'ct-arrow'
+        );
+        data.group.append(arrow);
+        const customLabels = [];
+        customLabels[data.index] = Chartist.getMultiValue(data.value);
+        if (customLabels[data.index]) {
+          const x = data.type === 'bar' ? data.x2 : data.x;
+          const y = data.type === 'bar' ? data.y2 : data.y;
+          data.group
+            .elem('text', { x: x - 15, y: y - 25 }, 'ct-label-top')
+            .text('$' + strToNum(customLabels[data.index] / 1000) + ' B');
+        }
+        //console.log(customLabels[data.index]);
+      }
+    }
+
+    if (
+      data.type === 'bar' &&
+      data.group._node.classList.contains('ct-series')
+    ) {
+      data.group._node.setAttribute(
+        'ref',
+        (dataRefs.current[data.seriesIndex] = data.group._node)
+      );
     }
   };
   const options = {
@@ -92,80 +178,7 @@ const FederalismChart = (props) => {
       },
     ],
   ];
-  const toggle = (key) => {
-    if (state.activeKeys) {
-      if (!state.activeKeys.includes(key)) {
-        setState({
-          activeKeys: [...state.activeKeys, key],
-          currKey: key,
-        });
-      } else {
-        setState({
-          activeKeys: [...state.activeKeys].filter((item) => item !== key),
-          currKey: null,
-        });
-      }
-    }
-  };
 
-  /* Chart Specific Handler */
-  const onDrawHandler = (data) => {
-    if (data.type === 'grid' && data.index === 0) {
-      data.element.addClass('axis');
-    }
-
-    if (data.type === 'bar') {
-      if (Chartist.getMultiValue(data.value) > 125000) {
-        const arrow = Chartist.Svg(
-          'path',
-          {
-            d: [
-              'M',
-              data.x1,
-              data.y2 - 13,
-              'L',
-              data.x2 - 13,
-              data.y2 + 1,
-              'L',
-              data.x2 + 13,
-              data.y2 + 1,
-              'z',
-            ].join(' '),
-            style: 'fill-opacity: 1 ; fill: #f4c63d',
-          },
-          'ct-arrow'
-        );
-        data.group.append(arrow);
-        const customLabels = [];
-        customLabels[data.index] = Chartist.getMultiValue(data.value);
-        if (customLabels[data.index]) {
-          const x = data.type === 'bar' ? data.x2 : data.x;
-          const y = data.type === 'bar' ? data.y2 : data.y;
-          data.group
-            .elem('text', { x: x - 15, y: y - 25 }, 'ct-label-top')
-            .text('$' + strToNum(customLabels[data.index] / 1000) + ' B');
-        }
-        console.log(customLabels[data.index]);
-      }
-    }
-
-    if (
-      data.type === 'bar' &&
-      data.group._node.classList.contains('ct-series')
-    ) {
-      data.group._node.setAttribute(
-        'ref',
-        (dataRefs.current[data.seriesIndex] = data.group._node)
-      );
-    }
-  };
-  const activeKeys = state.activeKeys;
-  const currKey = state.currKey;
-
-  useUpdateDataStyles(dataRefs, activeKeys, currKey, 'visible', 'animate');
-  useEffect(() => {
-    window.addEventListener('scroll', (e) => handleScroll(e));
-  });
   return (
     <div className={`federalism`} ref={scrollRef} onScroll={handleScroll}>
       <section>
