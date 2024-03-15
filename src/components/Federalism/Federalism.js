@@ -9,22 +9,22 @@ import ChartistTooltip from 'chartist-plugin-tooltips-updated';
 import { useUpdateDataStyles } from '../../hooks';
 import './index.css';
 // import ScrollAnimation from 'react-animate-on-scroll';
-const FederalismChart = props => {
+const FederalismChart = (props) => {
   const dataRefs = useRef([]);
   const scrollRef = useRef();
   const [state, setState] = useState({
     activeKeys: [],
-    currKey: null
+    currKey: null,
   });
-  const handleScroll = e => {
-    let verticalOffset = window.pageYOffset;
-    const componentOffset = e.target.body.querySelector('.federalism')
-      .offsetTop;
-    const buffer = 35;
+  const handleScroll = (e) => {
+    let verticalOffset = window.scrollY;
+    const componentOffset =
+      e.target.body.querySelector('.federalism').offsetTop;
+    const buffer = 100;
     if (componentOffset - verticalOffset < buffer) {
       setState({
         activeKeys: [...state.activeKeys, 0],
-        currKey: 0
+        currKey: 0,
       });
     }
   };
@@ -42,7 +42,7 @@ const FederalismChart = props => {
         } else {
           return value;
         }
-      }
+      },
     },
     axisY: {
       offset: 80,
@@ -53,7 +53,7 @@ const FederalismChart = props => {
       type: ChartistGraph.FixedScaleAxis,
       high: 150000,
       low: 0,
-      ticks: [0, 25000, 50000, 75000, 100000, 125000]
+      ticks: [0, 25000, 50000, 75000, 100000, 125000],
     },
     plugins: [
       ChartistTooltip({
@@ -62,9 +62,9 @@ const FederalismChart = props => {
         transformTooltipTextFnc: function (x) {
           //return addCommas(x) + 'M';
           return (x / 1000).toFixed(1) + 'B';
-        }
-      })
-    ]
+        },
+      }),
+    ],
   };
 
   const responsiveOptions = [
@@ -80,36 +80,36 @@ const FederalismChart = props => {
             } else {
               return "'" + value.substring(2);
             }
-          }
+          },
         },
         axisY: {
           offset: 40,
           labelOffset: { x: 0 },
           labelInterpolationFnc: function (value) {
             return value / 1000 + 'K';
-          }
-        }
-      }
-    ]
+          },
+        },
+      },
+    ],
   ];
-  const toggle = key => {
+  const toggle = (key) => {
     if (state.activeKeys) {
       if (!state.activeKeys.includes(key)) {
         setState({
           activeKeys: [...state.activeKeys, key],
-          currKey: key
+          currKey: key,
         });
       } else {
         setState({
-          activeKeys: [...state.activeKeys].filter(item => item !== key),
-          currKey: null
+          activeKeys: [...state.activeKeys].filter((item) => item !== key),
+          currKey: null,
         });
       }
     }
   };
 
   /* Chart Specific Handler */
-  const onDrawHandler = data => {
+  const onDrawHandler = (data) => {
     if (data.type === 'grid' && data.index === 0) {
       data.element.addClass('axis');
     }
@@ -129,9 +129,9 @@ const FederalismChart = props => {
               'L',
               data.x2 + 13,
               data.y2 + 1,
-              'z'
+              'z',
             ].join(' '),
-            style: 'fill-opacity: 1 ; fill: #f4c63d'
+            style: 'fill-opacity: 1 ; fill: #f4c63d',
           },
           'ct-arrow'
         );
@@ -164,7 +164,7 @@ const FederalismChart = props => {
 
   useUpdateDataStyles(dataRefs, activeKeys, currKey, 'visible', 'animate');
   useEffect(() => {
-    window.addEventListener('scroll', e => handleScroll(e));
+    window.addEventListener('scroll', (e) => handleScroll(e));
   });
   return (
     <div className={`federalism`} ref={scrollRef} onScroll={handleScroll}>
@@ -177,7 +177,7 @@ const FederalismChart = props => {
             options={options}
             responsiveOptions={responsiveOptions}
             type={props.type}
-            listener={{ draw: e => onDrawHandler(e) }}
+            listener={{ draw: (e) => onDrawHandler(e) }}
           />
         </Container>
         <Container className="legend-wrap">
@@ -195,15 +195,13 @@ const FederalismChart = props => {
                     onClick={() => {
                       toggle(i);
                     }}
-                    className={classnames(`key key-${i}`)}
-                  >
+                    className={classnames(`key key-${i}`)}>
                     <i
                       className={classnames(
                         `${key.toLowerCase().replace(/\s/g, '-')}`,
                         state.activeKeys.includes(i) ? 'on' : ''
                       )}
-                      key={`${i}`}
-                    ></i>
+                      key={`${i}`}></i>
                     {key}
                   </button>
                 </Col>

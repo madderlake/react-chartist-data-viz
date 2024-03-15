@@ -30,6 +30,7 @@
       background-color: transparent;
       height: 3rem;
       display: flex;
+      justify-content: center;
       align-items: center;
       width: 100%;
       appearance: none;
@@ -37,8 +38,8 @@
 
       i {
         display: block;
-        width: 4rem;
-        height: 4rem;
+        width: 2.5rem;
+        height: 2.5rem;
         background-size: 90%;
         background-position: center center;
         background-repeat: no-repeat;
