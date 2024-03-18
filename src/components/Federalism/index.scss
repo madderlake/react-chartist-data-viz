@@ -8,7 +8,6 @@
   }
   .legend-wrap {
     position: relative;
-    //margin-left: 80px;
     padding: 0 0.5em;
   }
 
@@ -30,11 +29,12 @@
       background-color: transparent;
       height: 3rem;
       display: flex;
-      justify-content: center;
+      // justify-content: center;
       align-items: center;
       width: 100%;
       appearance: none;
       outline: none;
+      padding: 0;
 
       i {
         display: block;
@@ -43,7 +43,12 @@
         background-size: 90%;
         background-position: center center;
         background-repeat: no-repeat;
-
+        &.all {
+          background-image: url('./icons/5-combined.svg');
+          &.on {
+            background-image: url('./icons/5-combined-on.svg');
+          }
+        }
         &.transportation {
           background-image: url('./icons/3-transportation.svg');
           &.on {
@@ -87,11 +92,13 @@
   .visible {
     visibility: visible !important;
   }
-
+  .ct-grid {
+    stroke: rgba(0, 0, 0, 0.5);
+  }
   .ct-label,
   .ct-axis-title {
-    color: $gray;
-    fill: $gray;
+    color: black;
+    fill: black;
   }
   .ct-axis-title {
     font-size: 0.75rem;

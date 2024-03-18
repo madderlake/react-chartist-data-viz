@@ -28,11 +28,11 @@
   background-color: transparent;
   height: 3rem;
   display: flex;
-  justify-content: center;
   align-items: center;
   width: 100%;
   appearance: none;
   outline: none;
+  padding: 0;
 }
 .federalism .key-wrap button i {
   display: block;
@@ -41,6 +41,12 @@
   background-size: 90%;
   background-position: center center;
   background-repeat: no-repeat;
+}
+.federalism .key-wrap button i.all {
+  background-image: url("./icons/5-combined.svg");
+}
+.federalism .key-wrap button i.all.on {
+  background-image: url("./icons/5-combined-on.svg");
 }
 .federalism .key-wrap button i.transportation {
   background-image: url("./icons/3-transportation.svg");
@@ -80,10 +86,13 @@
 .federalism .visible {
   visibility: visible !important;
 }
+.federalism .ct-grid {
+  stroke: rgba(0, 0, 0, 0.5);
+}
 .federalism .ct-label,
 .federalism .ct-axis-title {
-  color: #777;
-  fill: #777;
+  color: black;
+  fill: black;
 }
 .federalism .ct-axis-title {
   font-size: 0.75rem;
