@@ -29,20 +29,20 @@ Object.entries(totalsData).forEach(([year, total]) => {
 });
 for (let k in fedData) {
   const arr = Object.values(fedData[k]);
+  labelArr = Object.keys(fedData[k]);
   arr.map((item, i) => {
     return newArr.push({ meta: k, value: strToNum(item) });
   });
 }
 /* reversing this because it is unshifted later on */
 const yearSet = [...new Set(Object.values(totalsData).reverse())];
-console.log(yearSet);
+
 yearSet.map((val) => newArr.unshift({ meta: 'Total', value: strToNum(val) }));
 
 const labels = [...new Set(labelArr)];
 const keys = Object.keys(fedData);
 keys.unshift('Total');
-
-console.log(newArr);
+console.log(labels);
 const result = newArr.reduce((r, o) => {
   const k = o.meta;
   if (r[k] || (r[k] = [])) r[k].push({ meta: k, value: o.value });
@@ -53,8 +53,6 @@ for (var n in result) {
   series.push(result[n]);
 }
 
-// Object.entries(totalsData).map((entry) => series.push(entry));
-
 const data = { labels: labels, series: series };
-console.log('Series:', data.series);
+console.log('Series:', data.series, 'Labels', data.labels);
 export { data, keys };
