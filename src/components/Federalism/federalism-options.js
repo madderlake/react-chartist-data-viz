@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import Chartist from 'chartist';
 import { strToNum } from '../utilities/Helpers';
 import ChartistTooltip from 'chartist-plugin-tooltips-updated';
@@ -26,7 +25,7 @@ export const onDrawHandler = (data, refs) => {
             data.y2 + 1,
             'z',
           ].join(' '),
-          style: 'fill-opacity: 1 ; fill: #f4c63d',
+          style: 'fill-opacity: 1 ; fill: #ec4899',
         },
         'ct-arrow'
       );
@@ -49,6 +48,7 @@ export const onDrawHandler = (data, refs) => {
       'ref',
       (refs.current[data.seriesIndex] = data.group._node)
     );
+    // console.log(data.group._node);
   }
 };
 export const options = {

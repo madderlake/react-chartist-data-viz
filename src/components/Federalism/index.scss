@@ -31,7 +31,7 @@
       display: flex;
       // justify-content: center;
       align-items: center;
-      width: 100%;
+      // width: 100%;
       appearance: none;
       outline: none;
       padding: 0;
@@ -105,9 +105,6 @@
   }
   .ct-series {
     visibility: hidden;
-    &.visible {
-      visibility: visible;
-    }
   }
 
   .ct-label-top {
@@ -137,7 +134,7 @@
   .ct-series.animate .ct-bar {
     transform: scaleY(0);
     transform-origin: 100% 84%;
-    animation: draw 1.5s linear forwards;
+    animation: draw 1.2s linear forwards;
   }
 
   /* Customize the Community bars, since they are the shortest and rise too slowly */
@@ -196,4 +193,29 @@
 .ct-area,
 .ct-line {
   pointer-events: none;
+}
+/* Color updates */
+.ct-series-a .ct-point,
+.ct-series-a .ct-line,
+.ct-series-a .ct-bar,
+.ct-series-a .ct-slice-donut {
+  stroke: $cyan;
+}
+.ct-series-b .ct-point,
+.ct-series-b .ct-line,
+.ct-series-b .ct-bar,
+.ct-series-b .ct-slice-donut {
+  stroke: $violet;
+}
+.ct-series-c .ct-point,
+.ct-series-c .ct-line,
+.ct-series-c .ct-bar,
+.ct-series-c .ct-slice-donut {
+  stroke: $pink;
+}
+.ct-series-d .ct-point,
+.ct-series-d .ct-line,
+.ct-series-d .ct-bar,
+.ct-series-d .ct-slice-donut {
+  stroke: $green;
 }

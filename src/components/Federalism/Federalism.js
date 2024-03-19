@@ -16,7 +16,7 @@ const FederalismChart = (props) => {
 
   const keysArray = Array.from(Array(keys.length).keys());
   const [activeKeys, setActiveKeys] = useState([]);
-
+  const [currKey, setCurrKey] = useState(null);
   const visibleClass = 'visible';
   const animateClass = 'animate';
 
@@ -52,16 +52,22 @@ const FederalismChart = (props) => {
   const showCombined = () => setActiveKeys(keysArray);
 
   useEffect(() => {
-    if (dataRefs.current === undefined) return;
-    const els = dataRefs.current;
-    showCombined();
-    els.map((el, i) => updateDataStyle(el, i));
+    window.addEventListener('load', function () {
+      setActiveKeys(keysArray);
+    });
+    window.addEventListener('resize', function () {
+      setActiveKeys(keysArray);
+    });
+    return () => {
+      window.removeEventListener('load', setActiveKeys);
+      window.removeEventListener('resize', setActiveKeys);
+    };
   }, []);
 
   useEffect(() => {
     const els = dataRefs.current;
-    els.map((el, i) => updateDataStyle(el, i));
-  }, [activeKeys, updateDataStyle]);
+    els.map((el, i) => setTimeout(updateDataStyle, 750 * i, el, i));
+  }, [activeKeys]);
 
   return (
     <div className={`federalism`} ref={scrollRef} onScroll={handleScroll}>
@@ -78,10 +84,10 @@ const FederalismChart = (props) => {
           />
         </Container>
         <Container className="legend-wrap">
-          <h5 className={`mb-5`}>
+          {/* <h5 className={`mb-5`}>
             Select Categories Below to Compare How Much Support the Federal
             Gov't Provides to the States
-          </h5>
+          </h5> */}
           <Row className="">
             <Col className={`key-wrap`} key="all" sm={12} md={6} lg={2}>
               <button
@@ -95,7 +101,7 @@ const FederalismChart = (props) => {
                     activeKeys.length === keys.length ? 'on' : ''
                   )}
                   key="all"></i>
-                {'Combined'}
+                {'All'}
               </button>
             </Col>
             {keys.map((key, i) => {

@@ -1,4 +1,5 @@
 /* Chartist Colors */
+/* Tailwind Colors */
 .federalism {
   /* Customize the Community bars, since they are the shortest and rise too slowly */
 }
@@ -29,7 +30,6 @@
   height: 3rem;
   display: flex;
   align-items: center;
-  width: 100%;
   appearance: none;
   outline: none;
   padding: 0;
@@ -100,9 +100,6 @@
 .federalism .ct-series {
   visibility: hidden;
 }
-.federalism .ct-series.visible {
-  visibility: visible;
-}
 .federalism .ct-label-top {
   font-size: 0.75rem;
 }
@@ -127,7 +124,7 @@
 .federalism .ct-series.animate .ct-bar {
   transform: scaleY(0);
   transform-origin: 100% 84%;
-  animation: draw 1.5s linear forwards;
+  animation: draw 1.2s linear forwards;
 }
 .federalism .ct-series-b.animate .ct-bar {
   animation: draw 0.5s linear forwards;
@@ -182,4 +179,33 @@
 .ct-area,
 .ct-line {
   pointer-events: none;
+}
+
+/* Color updates */
+.ct-series-a .ct-point,
+.ct-series-a .ct-line,
+.ct-series-a .ct-bar,
+.ct-series-a .ct-slice-donut {
+  stroke: #06b6d4;
+}
+
+.ct-series-b .ct-point,
+.ct-series-b .ct-line,
+.ct-series-b .ct-bar,
+.ct-series-b .ct-slice-donut {
+  stroke: #8b5cf6;
+}
+
+.ct-series-c .ct-point,
+.ct-series-c .ct-line,
+.ct-series-c .ct-bar,
+.ct-series-c .ct-slice-donut {
+  stroke: #ec4899;
+}
+
+.ct-series-d .ct-point,
+.ct-series-d .ct-line,
+.ct-series-d .ct-bar,
+.ct-series-d .ct-slice-donut {
+  stroke: #22c55e;
 }

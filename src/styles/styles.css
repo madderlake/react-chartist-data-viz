@@ -1,6 +1,7 @@
 @import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 @import '../../node_modules/chartist/dist/chartist.css';
 /* Chartist Colors */
+/* Tailwind Colors */
 body {
   margin: 0;
   background-color: white;
