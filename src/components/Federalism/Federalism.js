@@ -15,8 +15,8 @@ const FederalismChart = (props) => {
   const scrollRef = useRef();
 
   const keysArray = Array.from(Array(keys.length).keys());
-  const [activeKeys, setActiveKeys] = useState([]);
-  const [currKey, setCurrKey] = useState(null);
+  console.log(keys);
+  const [activeKeys, setActiveKeys] = useState([0]);
   const visibleClass = 'visible';
   const animateClass = 'animate';
 
@@ -49,14 +49,12 @@ const FederalismChart = (props) => {
     }
   };
 
-  const showCombined = () => setActiveKeys(keysArray);
-
   useEffect(() => {
     window.addEventListener('load', function () {
-      setActiveKeys(keysArray);
+      setActiveKeys([0]);
     });
     window.addEventListener('resize', function () {
-      setActiveKeys(keysArray);
+      setActiveKeys([0]);
     });
     return () => {
       window.removeEventListener('load', setActiveKeys);
@@ -89,27 +87,12 @@ const FederalismChart = (props) => {
             Gov't Provides to the States
           </h5> */}
           <Row className="">
-            <Col className={`key-wrap`} key="all" sm={12} md={6} lg={2}>
-              <button
-                key={`k-all`}
-                data-index={`btn-all`}
-                onClick={() => showCombined()}
-                className={classnames(`key key-all`)}>
-                <i
-                  className={classnames(
-                    `all `,
-                    activeKeys.length === keys.length ? 'on' : ''
-                  )}
-                  key="all"></i>
-                {'All'}
-              </button>
-            </Col>
             {keys.map((key, i) => {
               return (
                 <Col className={`key-wrap`} key={key} sm={12} md={6} lg={2}>
                   <button
                     key={`k${i}`}
-                    data-index={`btn-${i}`}
+                    data-index={i}
                     onClick={() => toggleKeys(i)}
                     className={classnames(`key key-${i}`)}>
                     <i

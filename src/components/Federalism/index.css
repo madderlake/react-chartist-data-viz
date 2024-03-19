@@ -42,10 +42,10 @@
   background-position: center center;
   background-repeat: no-repeat;
 }
-.federalism .key-wrap button i.all {
+.federalism .key-wrap button i.total {
   background-image: url("./icons/5-combined.svg");
 }
-.federalism .key-wrap button i.all.on {
+.federalism .key-wrap button i.total.on {
   background-image: url("./icons/5-combined-on.svg");
 }
 .federalism .key-wrap button i.transportation {
@@ -185,27 +185,44 @@
 .ct-series-a .ct-point,
 .ct-series-a .ct-line,
 .ct-series-a .ct-bar,
-.ct-series-a .ct-slice-donut {
-  stroke: #06b6d4;
+.ct-series-a .ct-slice-donut,
+.ct-series-a .ct-arrow {
+  stroke: #64748b;
+  fill: #64748b;
 }
 
 .ct-series-b .ct-point,
 .ct-series-b .ct-line,
 .ct-series-b .ct-bar,
-.ct-series-b .ct-slice-donut {
-  stroke: #8b5cf6;
+.ct-series-b .ct-slice-donut,
+.ct-series-b .ct-arrow {
+  stroke: #06b6d4;
+  fill: #06b6d4;
 }
 
 .ct-series-c .ct-point,
 .ct-series-c .ct-line,
 .ct-series-c .ct-bar,
-.ct-series-c .ct-slice-donut {
-  stroke: #ec4899;
+.ct-series-c .ct-slice-donut,
+.ct-series-c .ct-arrow {
+  stroke: #8b5cf6;
+  fill: #8b5cf6;
 }
 
 .ct-series-d .ct-point,
 .ct-series-d .ct-line,
 .ct-series-d .ct-bar,
-.ct-series-d .ct-slice-donut {
+.ct-series-d .ct-slice-donut,
+.ct-series-d .ct-arrow {
   stroke: #22c55e;
+  fill: #22c55e;
+}
+
+.ct-series-e .ct-point,
+.ct-series-e .ct-line,
+.ct-series-e .ct-bar,
+.ct-series-e .ct-slice-donut,
+.ct-series-e .ct-arrow {
+  stroke: #ec4899;
+  fill: #ec4899;
 }

@@ -25,7 +25,6 @@ export const onDrawHandler = (data, refs) => {
             data.y2 + 1,
             'z',
           ].join(' '),
-          style: 'fill-opacity: 1 ; fill: #ec4899',
         },
         'ct-arrow'
       );
@@ -37,9 +36,8 @@ export const onDrawHandler = (data, refs) => {
         const y = data.type === 'bar' ? data.y2 : data.y;
         data.group
           .elem('text', { x: x - 15, y: y - 25 }, 'ct-label-top')
-          .text('$' + strToNum(customLabels[data.index] / 1000) + ' B');
+          .text(strToNum(customLabels[data.index] / 1000) + 'B');
       }
-      //console.log(customLabels[data.index]);
     }
   }
 
@@ -48,7 +46,6 @@ export const onDrawHandler = (data, refs) => {
       'ref',
       (refs.current[data.seriesIndex] = data.group._node)
     );
-    // console.log(data.group._node);
   }
 };
 export const options = {
