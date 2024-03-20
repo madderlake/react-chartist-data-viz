@@ -195,43 +195,45 @@
   pointer-events: none;
 }
 /* Color updates */
-.ct-series-a .ct-point,
-.ct-series-a .ct-line,
-.ct-series-a .ct-bar,
-.ct-series-a .ct-slice-donut,
-.ct-series-a .ct-arrow {
-  stroke: $slate;
-  fill: $slate;
-}
-.ct-series-b .ct-point,
-.ct-series-b .ct-line,
-.ct-series-b .ct-bar,
-.ct-series-b .ct-slice-donut,
-.ct-series-b .ct-arrow {
-  stroke: $cyan;
-  fill: $cyan;
-}
-.ct-series-c .ct-point,
-.ct-series-c .ct-line,
-.ct-series-c .ct-bar,
-.ct-series-c .ct-slice-donut,
-.ct-series-c .ct-arrow {
-  stroke: $violet;
-  fill: $violet;
-}
-.ct-series-d .ct-point,
-.ct-series-d .ct-line,
-.ct-series-d .ct-bar,
-.ct-series-d .ct-slice-donut,
-.ct-series-d .ct-arrow {
-  stroke: $green;
-  fill: $green;
-}
-.ct-series-e .ct-point,
-.ct-series-e .ct-line,
-.ct-series-e .ct-bar,
-.ct-series-e .ct-slice-donut,
-.ct-series-e .ct-arrow {
-  stroke: $pink;
-  fill: $pink;
+.federalism {
+  .ct-series-a .ct-point,
+  .ct-series-a .ct-line,
+  .ct-series-a .ct-bar,
+  .ct-series-a .ct-slice-donut,
+  .ct-series-a .ct-arrow {
+    stroke: $sky;
+    fill: $sky;
+  }
+  .ct-series-b .ct-point,
+  .ct-series-b .ct-line,
+  .ct-series-b .ct-bar,
+  .ct-series-b .ct-slice-donut,
+  .ct-series-b .ct-arrow {
+    stroke: $teal;
+    fill: $teal;
+  }
+  .ct-series-c .ct-point,
+  .ct-series-c .ct-line,
+  .ct-series-c .ct-bar,
+  .ct-series-c .ct-slice-donut,
+  .ct-series-c .ct-arrow {
+    stroke: $indigo;
+    fill: $indigo;
+  }
+  .ct-series-d .ct-point,
+  .ct-series-d .ct-line,
+  .ct-series-d .ct-bar,
+  .ct-series-d .ct-slice-donut,
+  .ct-series-d .ct-arrow {
+    stroke: $lime;
+    fill: $lime;
+  }
+  .ct-series-e .ct-point,
+  .ct-series-e .ct-line,
+  .ct-series-e .ct-bar,
+  .ct-series-e .ct-slice-donut,
+  .ct-series-e .ct-arrow {
+    stroke: $purple;
+    fill: $purple;
+  }
 }

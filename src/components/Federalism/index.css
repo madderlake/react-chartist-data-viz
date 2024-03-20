@@ -182,47 +182,43 @@
 }
 
 /* Color updates */
-.ct-series-a .ct-point,
-.ct-series-a .ct-line,
-.ct-series-a .ct-bar,
-.ct-series-a .ct-slice-donut,
-.ct-series-a .ct-arrow {
-  stroke: #64748b;
-  fill: #64748b;
+.federalism .ct-series-a .ct-point,
+.federalism .ct-series-a .ct-line,
+.federalism .ct-series-a .ct-bar,
+.federalism .ct-series-a .ct-slice-donut,
+.federalism .ct-series-a .ct-arrow {
+  stroke: #0ea5e9;
+  fill: #0ea5e9;
 }
-
-.ct-series-b .ct-point,
-.ct-series-b .ct-line,
-.ct-series-b .ct-bar,
-.ct-series-b .ct-slice-donut,
-.ct-series-b .ct-arrow {
-  stroke: #06b6d4;
-  fill: #06b6d4;
+.federalism .ct-series-b .ct-point,
+.federalism .ct-series-b .ct-line,
+.federalism .ct-series-b .ct-bar,
+.federalism .ct-series-b .ct-slice-donut,
+.federalism .ct-series-b .ct-arrow {
+  stroke: #14b8a6;
+  fill: #14b8a6;
 }
-
-.ct-series-c .ct-point,
-.ct-series-c .ct-line,
-.ct-series-c .ct-bar,
-.ct-series-c .ct-slice-donut,
-.ct-series-c .ct-arrow {
-  stroke: #8b5cf6;
-  fill: #8b5cf6;
+.federalism .ct-series-c .ct-point,
+.federalism .ct-series-c .ct-line,
+.federalism .ct-series-c .ct-bar,
+.federalism .ct-series-c .ct-slice-donut,
+.federalism .ct-series-c .ct-arrow {
+  stroke: #6366f1;
+  fill: #6366f1;
 }
-
-.ct-series-d .ct-point,
-.ct-series-d .ct-line,
-.ct-series-d .ct-bar,
-.ct-series-d .ct-slice-donut,
-.ct-series-d .ct-arrow {
-  stroke: #22c55e;
-  fill: #22c55e;
+.federalism .ct-series-d .ct-point,
+.federalism .ct-series-d .ct-line,
+.federalism .ct-series-d .ct-bar,
+.federalism .ct-series-d .ct-slice-donut,
+.federalism .ct-series-d .ct-arrow {
+  stroke: #84cc16;
+  fill: #84cc16;
 }
-
-.ct-series-e .ct-point,
-.ct-series-e .ct-line,
-.ct-series-e .ct-bar,
-.ct-series-e .ct-slice-donut,
-.ct-series-e .ct-arrow {
-  stroke: #ec4899;
-  fill: #ec4899;
+.federalism .ct-series-e .ct-point,
+.federalism .ct-series-e .ct-line,
+.federalism .ct-series-e .ct-bar,
+.federalism .ct-series-e .ct-slice-donut,
+.federalism .ct-series-e .ct-arrow {
+  stroke: #a855f7;
+  fill: #a855f7;
 }

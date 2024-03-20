@@ -23,10 +23,6 @@ function calculateYearTotals(data) {
 // Calculate totals
 const totalsData = calculateYearTotals(totalsArr);
 
-console.log('Totals by year:');
-Object.entries(totalsData).forEach(([year, total]) => {
-  console.log(`${year}: ${total}`);
-});
 for (let k in fedData) {
   const arr = Object.values(fedData[k]);
   labelArr = Object.keys(fedData[k]);
@@ -42,7 +38,7 @@ yearSet.map((val) => newArr.unshift({ meta: 'Total', value: strToNum(val) }));
 const labels = [...new Set(labelArr)];
 const keys = Object.keys(fedData);
 keys.unshift('Total');
-console.log(labels);
+
 const result = newArr.reduce((r, o) => {
   const k = o.meta;
   if (r[k] || (r[k] = [])) r[k].push({ meta: k, value: o.value });
@@ -54,5 +50,4 @@ for (var n in result) {
 }
 
 const data = { labels: labels, series: series };
-console.log('Series:', data.series, 'Labels', data.labels);
 export { data, keys };

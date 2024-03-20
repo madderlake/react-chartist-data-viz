@@ -14,8 +14,6 @@ const FederalismChart = (props) => {
   const dataRefs = useRef([]);
   const scrollRef = useRef();
 
-  const keysArray = Array.from(Array(keys.length).keys());
-  console.log(keys);
   const [activeKeys, setActiveKeys] = useState([0]);
   const visibleClass = 'visible';
   const animateClass = 'animate';
