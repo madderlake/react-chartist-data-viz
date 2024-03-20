@@ -1,101 +1,139 @@
 /* Chartist Colors */
+/* Tailwind Colors */
 .federalism {
-  /* Customize the Community bars, since they are the shortest and rise too slowly */ }
-  .federalism .ct-chart {
-    position: relative;
-    margin-top: 2.5rem;
-    margin: 2.5rem auto; }
-  .federalism .legend-wrap {
-    position: relative;
-    padding: 0 0.5em; }
-  .federalism .legend {
-    display: flex;
-    width: 100%;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    margin-left: 2em; }
-  .federalism .key-wrap {
-    display: flex;
-    margin: 1rem auto; }
-    .federalism .key-wrap button {
-      border: none;
-      background-color: transparent;
-      height: 3rem;
-      display: flex;
-      align-items: center;
-      width: 100%;
-      appearance: none;
-      outline: none; }
-      .federalism .key-wrap button i {
-        display: block;
-        width: 4rem;
-        height: 4rem;
-        background-size: 90%;
-        background-position: center center;
-        background-repeat: no-repeat; }
-        .federalism .key-wrap button i.transportation {
-          background-image: url("./icons/3-transportation.svg"); }
-          .federalism .key-wrap button i.transportation.on {
-            background-image: url("./icons/3-transportation-on.svg"); }
-        .federalism .key-wrap button i.community-dev {
-          background-image: url("./icons/4-community-dev.svg"); }
-          .federalism .key-wrap button i.community-dev.on {
-            background-image: url("./icons/4-community-dev-on.svg"); }
-        .federalism .key-wrap button i.health {
-          background-image: url("./icons/6-health.svg"); }
-          .federalism .key-wrap button i.health.on {
-            background-image: url("./icons/6-health-on.svg"); }
-        .federalism .key-wrap button i.income-security {
-          background-image: url("./icons/7-income-security.svg"); }
-          .federalism .key-wrap button i.income-security.on {
-            background-image: url("./icons/7-income-security-on.svg"); }
-  .federalism .source {
-    margin: 2rem auto;
-    display: block; }
-    .federalism .source a {
-      text-decoration: none;
-      color: inherit; }
-      .federalism .source a:hover {
-        color: initial; }
-  .federalism .visible {
-    visibility: visible !important; }
-  .federalism .ct-label,
-  .federalism .ct-axis-title {
-    color: #777;
-    fill: #777; }
-  .federalism .ct-axis-title {
-    font-size: 0.75rem; }
-  .federalism .ct-series {
-    visibility: hidden; }
-    .federalism .ct-series.visible {
-      visibility: visible; }
-  .federalism .ct-label-top {
-    font-size: 0.75rem; }
-  .federalism .ct-arrow,
-  .federalism .ct-label-top {
-    opacity: 0;
-    transition: 1s fill-opacity; }
-  .federalism .ct-series.visible .ct-arrow,
-  .federalism .ct-series.visible .ct-label-top {
-    opacity: 1; }
-  .federalism .ct-series.animate .ct-arrow,
-  .federalism .ct-series.animate .ct-label-top {
-    opacity: 1;
-    transition: opacity 1s linear 1.5s; }
-  .federalism .ct-label-top.visible {
-    opacity: 1;
-    transition: opacity 1s linear 1.8s; }
-  .federalism .ct-series.animate .ct-bar {
-    transform: scaleY(0);
-    transform-origin: 100% 84%;
-    animation: draw 1.5s linear forwards; }
-  .federalism .ct-series-b.animate .ct-bar {
-    animation: draw 0.5s linear forwards; }
-
+  /* Customize the Community bars, since they are the shortest and rise too slowly */
+}
+.federalism .ct-chart {
+  position: relative;
+  margin-top: 2.5rem;
+  margin: 2.5rem auto;
+}
+.federalism .legend-wrap {
+  position: relative;
+  padding: 0 0.5em;
+}
+.federalism .legend {
+  display: flex;
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-left: 2em;
+}
+.federalism .key-wrap {
+  display: flex;
+  margin: 1rem auto;
+}
+.federalism .key-wrap button {
+  border: none;
+  background-color: transparent;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  appearance: none;
+  outline: none;
+  padding: 0;
+}
+.federalism .key-wrap button i {
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-size: 90%;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.federalism .key-wrap button i.total {
+  background-image: url("./icons/5-combined.svg");
+}
+.federalism .key-wrap button i.total.on {
+  background-image: url("./icons/5-combined-on.svg");
+}
+.federalism .key-wrap button i.transportation {
+  background-image: url("./icons/3-transportation.svg");
+}
+.federalism .key-wrap button i.transportation.on {
+  background-image: url("./icons/3-transportation-on.svg");
+}
+.federalism .key-wrap button i.community-dev {
+  background-image: url("./icons/4-community-dev.svg");
+}
+.federalism .key-wrap button i.community-dev.on {
+  background-image: url("./icons/4-community-dev-on.svg");
+}
+.federalism .key-wrap button i.health {
+  background-image: url("./icons/6-health.svg");
+}
+.federalism .key-wrap button i.health.on {
+  background-image: url("./icons/6-health-on.svg");
+}
+.federalism .key-wrap button i.income-security {
+  background-image: url("./icons/7-income-security.svg");
+}
+.federalism .key-wrap button i.income-security.on {
+  background-image: url("./icons/7-income-security-on.svg");
+}
+.federalism .source {
+  margin: 2rem auto;
+  display: block;
+}
+.federalism .source a {
+  text-decoration: none;
+  color: inherit;
+}
+.federalism .source a:hover {
+  color: initial;
+}
+.federalism .visible {
+  visibility: visible !important;
+}
+.federalism .ct-grid {
+  stroke: rgba(0, 0, 0, 0.5);
+}
+.federalism .ct-label,
+.federalism .ct-axis-title {
+  color: black;
+  fill: black;
+}
+.federalism .ct-axis-title {
+  font-size: 0.75rem;
+}
+.federalism .ct-series {
+  visibility: hidden;
+}
+.federalism .ct-label-top {
+  font-size: 0.75rem;
+}
+.federalism .ct-arrow,
+.federalism .ct-label-top {
+  opacity: 0;
+  transition: 1s fill-opacity;
+}
+.federalism .ct-series.visible .ct-arrow,
+.federalism .ct-series.visible .ct-label-top {
+  opacity: 1;
+}
+.federalism .ct-series.animate .ct-arrow,
+.federalism .ct-series.animate .ct-label-top {
+  opacity: 1;
+  transition: opacity 1s linear 1.5s;
+}
+.federalism .ct-label-top.visible {
+  opacity: 1;
+  transition: opacity 1s linear 1.8s;
+}
+.federalism .ct-series.animate .ct-bar {
+  transform: scaleY(0);
+  transform-origin: 100% 84%;
+  animation: draw 1.2s linear forwards;
+}
+.federalism .ct-series-b.animate .ct-bar {
+  animation: draw 0.5s linear forwards;
+}
 @keyframes draw {
   to {
-    transform: scaleY(1); } }
+    transform: scaleY(1);
+  }
+}
 
 /* Tooltips */
 .ct-tooltip {
@@ -107,13 +145,15 @@
   font-size: 0.75em;
   padding: 0.25rem 0.5rem;
   text-align: center;
-  visibility: hidden; }
-  .ct-tooltip.tooltip-show {
-    visibility: visible; }
+  visibility: hidden;
+}
+.ct-tooltip.tooltip-show {
+  visibility: visible;
+}
 
 .ct-tooltip:before,
 .ct-tooltip:after {
-  content: '\0020';
+  content: " ";
   position: absolute;
   top: 100%;
   left: 50%;
@@ -122,17 +162,63 @@
   margin-left: -15px;
   border: 15px solid transparent;
   border-top-color: #fff;
-  z-index: 2; }
+  z-index: 2;
+}
 
 .ct-tooltip:after {
-  content: '';
+  content: "";
   top: 102%;
   z-index: 1;
-  border-top-color: #6f6b5a; }
+  border-top-color: #6f6b5a;
+}
 
 .ct-tooltip.tooltip-show {
-  opacity: 1; }
+  opacity: 1;
+}
 
 .ct-area,
 .ct-line {
-  pointer-events: none; }
+  pointer-events: none;
+}
+
+/* Color updates */
+.federalism .ct-series-a .ct-point,
+.federalism .ct-series-a .ct-line,
+.federalism .ct-series-a .ct-bar,
+.federalism .ct-series-a .ct-slice-donut,
+.federalism .ct-series-a .ct-arrow {
+  stroke: #0ea5e9;
+  fill: #0ea5e9;
+}
+.federalism .ct-series-b .ct-point,
+.federalism .ct-series-b .ct-line,
+.federalism .ct-series-b .ct-bar,
+.federalism .ct-series-b .ct-slice-donut,
+.federalism .ct-series-b .ct-arrow {
+  stroke: #14b8a6;
+  fill: #14b8a6;
+}
+.federalism .ct-series-c .ct-point,
+.federalism .ct-series-c .ct-line,
+.federalism .ct-series-c .ct-bar,
+.federalism .ct-series-c .ct-slice-donut,
+.federalism .ct-series-c .ct-arrow {
+  stroke: #6366f1;
+  fill: #6366f1;
+}
+.federalism .ct-series-d .ct-point,
+.federalism .ct-series-d .ct-line,
+.federalism .ct-series-d .ct-bar,
+.federalism .ct-series-d .ct-slice-donut,
+.federalism .ct-series-d .ct-arrow {
+  stroke: #84cc16;
+  fill: #84cc16;
+}
+.federalism .ct-series-e .ct-point,
+.federalism .ct-series-e .ct-line,
+.federalism .ct-series-e .ct-bar,
+.federalism .ct-series-e .ct-slice-donut,
+.federalism .ct-series-e .ct-arrow {
+  stroke: #a855f7;
+  fill: #a855f7;
+}

@@ -8,7 +8,6 @@
   }
   .legend-wrap {
     position: relative;
-    //margin-left: 80px;
     padding: 0 0.5em;
   }
 
@@ -30,19 +29,26 @@
       background-color: transparent;
       height: 3rem;
       display: flex;
+      // justify-content: center;
       align-items: center;
-      width: 100%;
+      // width: 100%;
       appearance: none;
       outline: none;
+      padding: 0;
 
       i {
         display: block;
-        width: 4rem;
-        height: 4rem;
+        width: 2.5rem;
+        height: 2.5rem;
         background-size: 90%;
         background-position: center center;
         background-repeat: no-repeat;
-
+        &.total {
+          background-image: url('./icons/5-combined.svg');
+          &.on {
+            background-image: url('./icons/5-combined-on.svg');
+          }
+        }
         &.transportation {
           background-image: url('./icons/3-transportation.svg');
           &.on {
@@ -86,20 +92,19 @@
   .visible {
     visibility: visible !important;
   }
-
+  .ct-grid {
+    stroke: rgba(0, 0, 0, 0.5);
+  }
   .ct-label,
   .ct-axis-title {
-    color: $gray;
-    fill: $gray;
+    color: black;
+    fill: black;
   }
   .ct-axis-title {
     font-size: 0.75rem;
   }
   .ct-series {
     visibility: hidden;
-    &.visible {
-      visibility: visible;
-    }
   }
 
   .ct-label-top {
@@ -129,7 +134,7 @@
   .ct-series.animate .ct-bar {
     transform: scaleY(0);
     transform-origin: 100% 84%;
-    animation: draw 1.5s linear forwards;
+    animation: draw 1.2s linear forwards;
   }
 
   /* Customize the Community bars, since they are the shortest and rise too slowly */
@@ -188,4 +193,47 @@
 .ct-area,
 .ct-line {
   pointer-events: none;
+}
+/* Color updates */
+.federalism {
+  .ct-series-a .ct-point,
+  .ct-series-a .ct-line,
+  .ct-series-a .ct-bar,
+  .ct-series-a .ct-slice-donut,
+  .ct-series-a .ct-arrow {
+    stroke: $sky;
+    fill: $sky;
+  }
+  .ct-series-b .ct-point,
+  .ct-series-b .ct-line,
+  .ct-series-b .ct-bar,
+  .ct-series-b .ct-slice-donut,
+  .ct-series-b .ct-arrow {
+    stroke: $teal;
+    fill: $teal;
+  }
+  .ct-series-c .ct-point,
+  .ct-series-c .ct-line,
+  .ct-series-c .ct-bar,
+  .ct-series-c .ct-slice-donut,
+  .ct-series-c .ct-arrow {
+    stroke: $indigo;
+    fill: $indigo;
+  }
+  .ct-series-d .ct-point,
+  .ct-series-d .ct-line,
+  .ct-series-d .ct-bar,
+  .ct-series-d .ct-slice-donut,
+  .ct-series-d .ct-arrow {
+    stroke: $lime;
+    fill: $lime;
+  }
+  .ct-series-e .ct-point,
+  .ct-series-e .ct-line,
+  .ct-series-e .ct-bar,
+  .ct-series-e .ct-slice-donut,
+  .ct-series-e .ct-arrow {
+    stroke: $purple;
+    fill: $purple;
+  }
 }
