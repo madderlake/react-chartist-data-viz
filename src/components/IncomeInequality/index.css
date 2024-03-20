@@ -1,89 +1,111 @@
 /* Chartist Colors */
+/* Tailwind Colors */
 .income-inequality .ct-label,
 .income-inequality .ct-axis-title {
-  font-family: 'Roboto';
+  font-family: "Roboto";
   color: #777;
   fill: #777;
-  font-size: 0.9em; }
-
+  font-size: 0.9em;
+}
 .income-inequality .ct-chart .ct-label.ct-horizontal {
   display: inline-block;
   width: auto !important;
-  transform: translateX(-50%); }
-
+  transform: translateX(-50%);
+}
 .income-inequality .ct-series {
-  visibility: hidden; }
-  .income-inequality .ct-series.visible {
-    visibility: visible; }
-
+  visibility: hidden;
+}
+.income-inequality .ct-series.visible {
+  visibility: visible;
+}
 .income-inequality .ct-series .ct-line {
-  stroke-width: 3px; }
-
+  stroke-width: 3px;
+}
 .income-inequality .ct-series .ct-point {
-  stroke-width: 6.5px; }
-
+  stroke-width: 6.5px;
+}
 .income-inequality .ct-series.visible .ct-line,
 .income-inequality .ct-series.visible .ct-point {
-  visibility: visible; }
-
+  visibility: visible;
+}
 .income-inequality .ct-series.animate .ct-line {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
-  animation: dash 3s linear forwards; }
-
+  animation: dash 3s linear forwards;
+}
 @keyframes dash {
   to {
-    stroke-dashoffset: 0; } }
-
+    stroke-dashoffset: 0;
+  }
+}
 .income-inequality .ct-area,
 .income-inequality .ct-line {
-  pointer-events: none; }
-
+  pointer-events: none;
+}
 .income-inequality .legend-wrap {
-  margin: 2.5rem auto; }
-  .income-inequality .legend-wrap .key {
-    display: flex;
-    justify-content: space-evenly;
-    cursor: pointer; }
-    .income-inequality .legend-wrap .key .checkbox {
-      margin-right: 0.5rem; }
-      .income-inequality .legend-wrap .key .checkbox rect {
-        stroke-width: 5;
-        fill: white; }
-  .income-inequality .legend-wrap .key-0 .checkbox rect {
-    stroke: #d70206; }
-  .income-inequality .legend-wrap .key-0.active .checkbox rect {
-    fill: #d70206; }
-  .income-inequality .legend-wrap .key-1 .checkbox rect {
-    stroke: #f05b4f; }
-  .income-inequality .legend-wrap .key-1.active .checkbox rect {
-    fill: #f05b4f; }
-  .income-inequality .legend-wrap .key-2 .checkbox rect {
-    stroke: #f4c63d; }
-  .income-inequality .legend-wrap .key-2.active .checkbox rect {
-    fill: #f4c63d; }
-  .income-inequality .legend-wrap .key-3 .checkbox rect {
-    stroke: #d17905; }
-  .income-inequality .legend-wrap .key-3.active .checkbox rect {
-    fill: #d17905; }
-  .income-inequality .legend-wrap .key-4 .checkbox rect {
-    stroke: #605558; }
-  .income-inequality .legend-wrap .key-4.active .checkbox rect {
-    fill: #605558; }
-
+  margin: 2.5rem auto;
+}
+.income-inequality .legend-wrap .key {
+  display: flex;
+  justify-content: space-evenly;
+  cursor: pointer;
+}
+.income-inequality .legend-wrap .key .checkbox {
+  margin-right: 0.5rem;
+}
+.income-inequality .legend-wrap .key .checkbox rect {
+  stroke-width: 5;
+  fill: white;
+}
+.income-inequality .legend-wrap .key-0 .checkbox rect {
+  stroke: #d70206;
+}
+.income-inequality .legend-wrap .key-0.active .checkbox rect {
+  fill: #d70206;
+}
+.income-inequality .legend-wrap .key-1 .checkbox rect {
+  stroke: #f05b4f;
+}
+.income-inequality .legend-wrap .key-1.active .checkbox rect {
+  fill: #f05b4f;
+}
+.income-inequality .legend-wrap .key-2 .checkbox rect {
+  stroke: #f4c63d;
+}
+.income-inequality .legend-wrap .key-2.active .checkbox rect {
+  fill: #f4c63d;
+}
+.income-inequality .legend-wrap .key-3 .checkbox rect {
+  stroke: #d17905;
+}
+.income-inequality .legend-wrap .key-3.active .checkbox rect {
+  fill: #d17905;
+}
+.income-inequality .legend-wrap .key-4 .checkbox rect {
+  stroke: #605558;
+}
+.income-inequality .legend-wrap .key-4.active .checkbox rect {
+  fill: #605558;
+}
 @media screen and (max-width: 640px) {
   .income-inequality .ct-axis-title {
-    display: none !important; }
+    display: none !important;
+  }
   .income-inequality body {
-    font-size: 95%; }
+    font-size: 95%;
+  }
   .income-inequality .legend-wrap {
-    padding: 0 1.25rem; }
-    .income-inequality .legend-wrap .row {
-      display: grid;
-      margin-left: auto;
-      margin-right: auto;
-      grid-template-columns: 30% 30% 30%;
-      grid-gap: 1.25rem; }
-      .income-inequality .legend-wrap .row .key {
-        display: grid;
-        grid-template-columns: 25% 75%; } }
+    padding: 0 1.25rem;
+  }
+  .income-inequality .legend-wrap .row {
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: 30% 30% 30%;
+    grid-gap: 1.25rem;
+  }
+  .income-inequality .legend-wrap .row .key {
+    display: grid;
+    grid-template-columns: 25% 75%;
+  }
+}
