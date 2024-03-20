@@ -79,6 +79,7 @@ export const options = {
     ChartistTooltip({
       currency: '$',
       class: 'ct-tooltip',
+      appendToBody: true,
       transformTooltipTextFnc: function (x) {
         //return addCommas(x) + 'M';
         return (x / 1000).toFixed(1) + 'B';

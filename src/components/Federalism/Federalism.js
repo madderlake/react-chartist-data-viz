@@ -15,6 +15,7 @@ const FederalismChart = (props) => {
   const scrollRef = useRef();
 
   const [activeKeys, setActiveKeys] = useState([0]);
+  const [currKey, setCurrKey] = useState(null);
   const visibleClass = 'visible';
   const animateClass = 'animate';
 
@@ -31,39 +32,44 @@ const FederalismChart = (props) => {
     if (activeKeys) {
       if (!activeKeys.includes(key)) {
         setActiveKeys([...activeKeys, key]);
+        setCurrKey(key);
       } else {
         setActiveKeys([...activeKeys].filter((item) => item !== key));
+        setCurrKey(null);
       }
-    }
-  };
-
-  const updateDataStyle = (el, i) => {
-    if (activeKeys.includes(i)) {
-      el.classList.add(visibleClass);
-      el.classList.add(animateClass);
-    } else {
-      el.classList.remove(visibleClass);
-      el.classList.remove(animateClass);
     }
   };
 
   useEffect(() => {
     window.addEventListener('load', function () {
       setActiveKeys([0]);
+      setCurrKey(0);
     });
     window.addEventListener('resize', function () {
       setActiveKeys([0]);
+      setCurrKey(0);
     });
     return () => {
       window.removeEventListener('load', setActiveKeys);
       window.removeEventListener('resize', setActiveKeys);
     };
-  }, []);
+  });
 
   useEffect(() => {
     const els = dataRefs.current;
-    els.map((el, i) => setTimeout(updateDataStyle, 750 * i, el, i));
-  }, [activeKeys]);
+    els.map((item, i) => {
+      return [
+        activeKeys.includes(i)
+          ? item.classList.add(visibleClass)
+          : item.classList.remove(visibleClass),
+        item.classList.remove(animateClass),
+
+        currKey === i
+          ? item.classList.add(animateClass)
+          : item.classList.remove(animateClass),
+      ];
+    });
+  }, [activeKeys, currKey]);
 
   return (
     <div className={`federalism`} ref={scrollRef} onScroll={handleScroll}>
@@ -80,10 +86,10 @@ const FederalismChart = (props) => {
           />
         </Container>
         <Container className="legend-wrap">
-          {/* <h5 className={`mb-5`}>
-            Select Categories Below to Compare How Much Support the Federal
-            Gov't Provides to the States
-          </h5> */}
+          <h5 className={`mb-5`}>
+            Select Categories Below to Explore the Support the Federal Gov't
+            Provides to the States
+          </h5>
           <Row className="">
             {keys.map((key, i) => {
               return (
