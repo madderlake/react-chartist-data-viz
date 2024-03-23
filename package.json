@@ -24,6 +24,8 @@
     "watch-css": "sass --no-source-map -w  src:src src/styles/styles.scss:src/styles/styles.css",
     "start-js": "react-scripts start",
     "build": "react-scripts build",
+    "build:fed": "env-cmd -f .fed.env  react-scripts build",
+    "build:inc": "env-cmd -f .inc.env  react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

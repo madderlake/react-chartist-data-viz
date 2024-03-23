@@ -127,7 +127,7 @@
   animation: draw 1.2s linear forwards;
 }
 .federalism .ct-series-b.animate .ct-bar {
-  animation: draw 0.5s linear forwards;
+  animation: draw 1s linear forwards;
 }
 @keyframes draw {
   to {

@@ -139,7 +139,7 @@
 
   /* Customize the Community bars, since they are the shortest and rise too slowly */
   .ct-series-b.animate .ct-bar {
-    animation: draw 0.5s linear forwards;
+    animation: draw 1s linear forwards;
   }
 
   @keyframes draw {

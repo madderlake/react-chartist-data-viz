@@ -14,18 +14,25 @@ const FederalismChart = (props) => {
   const dataRefs = useRef([]);
   const scrollRef = useRef();
 
-  const [activeKeys, setActiveKeys] = useState([0]);
+  const [activeKeys, setActiveKeys] = useState([]);
   const [currKey, setCurrKey] = useState(null);
   const visibleClass = 'visible';
   const animateClass = 'animate';
+  let hasScrolled = false;
+  const initialView = () => {
+    toggleKeys(0);
+  };
 
   const handleScroll = (e) => {
     let verticalOffset = window.scrollY;
-    const componentOffset =
-      e.target.body.querySelector('.federalism').offsetTop;
-    const buffer = 200;
-    if (componentOffset - verticalOffset < buffer) {
+    const componentOffset = scrollRef.current.offsetTop;
+    const buffer = 40;
+    if (componentOffset - verticalOffset < buffer && !hasScrolled) {
+      initialView();
+    } else {
+      return;
     }
+    hasScrolled = true;
   };
 
   const toggleKeys = (key) => {
@@ -41,19 +48,14 @@ const FederalismChart = (props) => {
   };
 
   useEffect(() => {
-    window.addEventListener('load', function () {
-      setActiveKeys([0]);
-      setCurrKey(0);
-    });
-    window.addEventListener('resize', function () {
-      setActiveKeys([0]);
-      setCurrKey(0);
-    });
+    window.addEventListener('scroll', handleScroll);
+    // window.addEventListener('load', initialView);
+    window.addEventListener('resize', initialView);
     return () => {
-      window.removeEventListener('load', setActiveKeys);
+      window.removeEventListener('scroll', setActiveKeys);
       window.removeEventListener('resize', setActiveKeys);
     };
-  });
+  }, []);
 
   useEffect(() => {
     const els = dataRefs.current;
@@ -72,7 +74,7 @@ const FederalismChart = (props) => {
   }, [activeKeys, currKey]);
 
   return (
-    <div className={`federalism`} ref={scrollRef} onScroll={handleScroll}>
+    <div className={`federalism`} ref={scrollRef}>
       <section>
         <Container>
           <h2 className={`text-center py-2`}> Federal Support for States</h2>
