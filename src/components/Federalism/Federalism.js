@@ -55,7 +55,7 @@ const FederalismChart = (props) => {
       window.removeEventListener('scroll', setActiveKeys);
       window.removeEventListener('resize', setActiveKeys);
     };
-  }, []);
+  });
 
   useEffect(() => {
     const els = dataRefs.current;
