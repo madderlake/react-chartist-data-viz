@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -24,6 +25,8 @@
     "watch-css": "sass --no-source-map -w  src:src src/styles/styles.scss:src/styles/styles.css",
     "start-js": "react-scripts start",
     "build": "react-scripts build",
+    "build:fed": "env-cmd -f .fed.env  react-scripts build",
+    "build:inc": "env-cmd -f .inc.env  react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
