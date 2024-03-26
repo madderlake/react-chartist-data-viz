@@ -1,12 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
-import ChartistGraph from 'react-chartist';
 import classnames from 'classnames';
 import { data, keys } from './data/inc-ineq-data-proc';
-import {
-  options,
-  responsiveOptions,
-  onDrawHandler,
-} from './incomeinequality-options';
+import { options, responsiveOptions, onDrawHandler } from './inc-options';
 import { Container, Row } from 'reactstrap';
 import './index.css';
 
@@ -63,7 +58,7 @@ const IncomeInequalityChart = (props) => {
             {' '}
             Income Inequality in the U.S.A 1991 - 2013
           </h2>
-          <ChartistGraph
+          {/* <ChartistGraph
             data={data}
             options={options}
             responsiveOptions={responsiveOptions}
@@ -71,7 +66,7 @@ const IncomeInequalityChart = (props) => {
             listener={{
               draw: (e) => onDrawHandler(e, dataRefs),
             }}
-          />
+          /> */}
         </Container>
         <Container className="legend-wrap">
           <Row className="justify-content-between">

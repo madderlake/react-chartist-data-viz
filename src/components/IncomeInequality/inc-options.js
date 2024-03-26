@@ -1,5 +1,5 @@
-import ChartistGraph from 'react-chartist';
 import { addCommas } from '../utilities/Helpers';
+import { FixedScaleAxis } from 'chartist';
 export const options = {
   width: '100%',
   height: 320,
@@ -12,7 +12,7 @@ export const options = {
       return addCommas(value);
     },
     labelOffset: { x: -10, y: 8 },
-    type: ChartistGraph.FixedScaleAxis,
+    type: FixedScaleAxis,
     high: 150000,
     low: 0,
   },

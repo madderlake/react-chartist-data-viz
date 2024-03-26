@@ -1,20 +1,19 @@
-import React, { useEffect, useRef, useState } from 'react';
-import ChartistGraph from 'react-chartist';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
+// import Chart from '../Chart';
+// import { FedChart } from './FedChart';
+import { BarChart } from 'chartist';
 import classnames from 'classnames';
 import { data, keys } from './data/federalism-data-proc';
-import {
-  options,
-  responsiveOptions,
-  onDrawHandler,
-} from './federalism-options';
+import { options, responsiveOptions, onDrawHandler } from './fed-options';
 import { Container, Row, Col } from 'reactstrap';
+import 'chartist/dist/index.css';
 import './index.css';
 
-const FederalismChart = (props) => {
+const Federalism = (props) => {
   const dataRefs = useRef([]);
   const scrollRef = useRef();
 
-  const [activeKeys, setActiveKeys] = useState([]);
+  const [activeKeys, setActiveKeys] = useState([0]);
   const [currKey, setCurrKey] = useState(null);
   const visibleClass = 'visible';
   const animateClass = 'animate';
@@ -46,6 +45,7 @@ const FederalismChart = (props) => {
 
   useEffect(() => {
     const els = dataRefs.current;
+    console.log(els);
     els.map((item, i) => {
       return [
         activeKeys.includes(i)
@@ -60,19 +60,21 @@ const FederalismChart = (props) => {
     });
   }, [activeKeys, currKey]);
 
+  const chart = useCallback(() => {
+    return new BarChart('#chart', data, options, responsiveOptions);
+  }, []);
+  useEffect(() => {
+    if (chart.current === undefined) return;
+    //chart();
+    chart().on('draw', () => onDrawHandler(data, dataRefs));
+  }, [chart]);
+
   return (
     <div className={`federalism`} ref={scrollRef}>
       <section>
         <Container>
           <h2 className={`text-center py-2`}> Federal Support for States</h2>
-
-          <ChartistGraph
-            data={data}
-            options={options}
-            responsiveOptions={responsiveOptions}
-            type={props.type}
-            listener={{ draw: (e) => onDrawHandler(e, dataRefs) }}
-          />
+          <div id="chart" ref={chart}></div>
         </Container>
         <Container className="legend-wrap">
           <h5 className="text-center">
@@ -112,4 +114,4 @@ const FederalismChart = (props) => {
   );
 };
 
-export default FederalismChart;
+export default Federalism;
