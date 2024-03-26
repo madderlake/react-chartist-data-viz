@@ -2,7 +2,6 @@ import React, { useRef, useState, useEffect } from 'react';
 import ChartistGraph from 'react-chartist';
 import classnames from 'classnames';
 import { data, keys } from './data/inc-ineq-data-proc';
-import { addCommas } from '../utilities/Helpers';
 import {
   options,
   responsiveOptions,
