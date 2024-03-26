@@ -1,16 +1,22 @@
 /* Chartist Colors */
 /* Tailwind Colors */
+.income-inequality {
+  /* Color Updates */
+}
 .income-inequality .ct-label,
 .income-inequality .ct-axis-title {
   font-family: "Roboto";
-  color: #777;
-  fill: #777;
+  color: black;
+  fill: black;
   font-size: 0.9em;
 }
-.income-inequality .ct-chart .ct-label.ct-horizontal {
-  display: inline-block;
-  width: auto !important;
-  transform: translateX(-50%);
+.income-inequality .ct-chart .ct-label.ct-horizontal.ct-end {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 8px;
+}
+.income-inequality .ct-grid {
+  stroke: rgba(0, 0, 0, 0.5);
 }
 .income-inequality .ct-series {
   visibility: hidden;
@@ -19,10 +25,10 @@
   visibility: visible;
 }
 .income-inequality .ct-series .ct-line {
-  stroke-width: 3px;
+  stroke-width: 2.5px;
 }
 .income-inequality .ct-series .ct-point {
-  stroke-width: 6.5px;
+  stroke-width: 5px;
 }
 .income-inequality .ct-series.visible .ct-line,
 .income-inequality .ct-series.visible .ct-point {
@@ -58,34 +64,69 @@
   fill: white;
 }
 .income-inequality .legend-wrap .key-0 .checkbox rect {
-  stroke: #d70206;
+  stroke: #f97316;
 }
 .income-inequality .legend-wrap .key-0.active .checkbox rect {
-  fill: #d70206;
+  fill: #f97316;
 }
 .income-inequality .legend-wrap .key-1 .checkbox rect {
-  stroke: #f05b4f;
+  stroke: #ec4899;
 }
 .income-inequality .legend-wrap .key-1.active .checkbox rect {
-  fill: #f05b4f;
+  fill: #ec4899;
 }
 .income-inequality .legend-wrap .key-2 .checkbox rect {
-  stroke: #f4c63d;
+  stroke: #eab308;
 }
 .income-inequality .legend-wrap .key-2.active .checkbox rect {
-  fill: #f4c63d;
+  fill: #eab308;
 }
 .income-inequality .legend-wrap .key-3 .checkbox rect {
-  stroke: #d17905;
+  stroke: #ef4444;
 }
 .income-inequality .legend-wrap .key-3.active .checkbox rect {
-  fill: #d17905;
+  fill: #ef4444;
 }
 .income-inequality .legend-wrap .key-4 .checkbox rect {
-  stroke: #605558;
+  stroke: #f59e0b;
 }
 .income-inequality .legend-wrap .key-4.active .checkbox rect {
-  fill: #605558;
+  fill: #f59e0b;
+}
+.income-inequality .ct-series-a .ct-point,
+.income-inequality .ct-series-a .ct-line,
+.income-inequality .ct-series-a .ct-bar,
+.income-inequality .ct-series-a .ct-slice-donut,
+.income-inequality .ct-series-a .ct-arrow {
+  stroke: #f97316;
+}
+.income-inequality .ct-series-b .ct-point,
+.income-inequality .ct-series-b .ct-line,
+.income-inequality .ct-series-b .ct-bar,
+.income-inequality .ct-series-b .ct-slice-donut,
+.income-inequality .ct-series-b .ct-arrow {
+  stroke: #ec4899;
+}
+.income-inequality .ct-series-c .ct-point,
+.income-inequality .ct-series-c .ct-line,
+.income-inequality .ct-series-c .ct-bar,
+.income-inequality .ct-series-c .ct-slice-donut,
+.income-inequality .ct-series-c .ct-arrow {
+  stroke: #eab308;
+}
+.income-inequality .ct-series-d .ct-point,
+.income-inequality .ct-series-d .ct-line,
+.income-inequality .ct-series-d .ct-bar,
+.income-inequality .ct-series-d .ct-slice-donut,
+.income-inequality .ct-series-d .ct-arrow {
+  stroke: #ef4444;
+}
+.income-inequality .ct-series-e .ct-point,
+.income-inequality .ct-series-e .ct-line,
+.income-inequality .ct-series-e .ct-bar,
+.income-inequality .ct-series-e .ct-slice-donut,
+.income-inequality .ct-series-e .ct-arrow {
+  stroke: #f59e0b;
 }
 @media screen and (max-width: 640px) {
   .income-inequality .ct-axis-title {

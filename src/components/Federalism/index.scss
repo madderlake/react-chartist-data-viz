@@ -23,6 +23,9 @@
   .key-wrap {
     display: flex;
     margin: 1rem auto;
+    @media (max-width: 640px) {
+      margin: 0;
+    }
 
     button {
       border: none;
@@ -92,7 +95,10 @@
   .visible {
     visibility: visible !important;
   }
-  .ct-grid {
+  .ct-grids {
+    overflow: hidden;
+  }
+  .ct-grids line {
     stroke: rgba(0, 0, 0, 0.5);
   }
   .ct-label,
@@ -130,10 +136,14 @@
     opacity: 1;
     transition: opacity 1s linear 1.8s;
   }
-
+  .ct-series .ct-bar {
+    @media (max-width: 640px) {
+      width: 57px;
+    }
+  }
   .ct-series.animate .ct-bar {
     transform: scaleY(0);
-    transform-origin: 100% 84%;
+    transform-origin: 100% 86.5%;
     animation: draw 1.2s linear forwards;
   }
 
