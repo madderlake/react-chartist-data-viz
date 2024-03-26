@@ -30,12 +30,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-.App {
-  text-align: center;
-}
-
 .App-header {
-  background-color: ffffff;
+  background-color: #ffffff;
   min-height: 12vh;
   display: flex;
   flex-direction: column;
@@ -43,6 +39,13 @@ code {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  padding: 1rem;
+}
+@media (max-width: 640px) {
+  .App-header {
+    width: 90%;
+    text-align: center;
+  }
 }
 
 section {

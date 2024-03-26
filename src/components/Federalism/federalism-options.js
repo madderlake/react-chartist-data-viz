@@ -16,12 +16,12 @@ export const onDrawHandler = (data, refs) => {
           d: [
             'M',
             data.x1,
-            data.y2 - 13,
+            data.y2 - 10,
             'L',
-            data.x2 - 13,
+            data.x2 - 10,
             data.y2 + 1,
             'L',
-            data.x2 + 13,
+            data.x2 + 10,
             data.y2 + 1,
             'z',
           ].join(' '),
@@ -34,9 +34,12 @@ export const onDrawHandler = (data, refs) => {
       if (customLabels[data.index]) {
         const x = data.type === 'bar' ? data.x2 : data.x;
         const y = data.type === 'bar' ? data.y2 : data.y;
+        const offsetY = data.group._node.classList.contains('ct-series-a')
+          ? 35
+          : 20;
         data.group
-          .elem('text', { x: x - 15, y: y - 25 }, 'ct-label-top')
-          .text(strToNum(customLabels[data.index] / 1000) + 'B');
+          .elem('text', { x: x - 15, y: y - offsetY }, 'ct-label-top')
+          .text('$' + strToNum(customLabels[data.index] / 1000) + 'B');
       }
     }
   }
@@ -50,8 +53,8 @@ export const onDrawHandler = (data, refs) => {
 };
 export const options = {
   width: '100%',
-  height: 380,
-  chartPadding: { top: 40, right: 0, bottom: 0, left: 0 },
+  height: 450,
+  chartPadding: { top: 80, right: 40, bottom: 0, left: 0 },
   seriesBarDistance: 10,
   axisX: {
     offset: 60,

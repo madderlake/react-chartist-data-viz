@@ -18,21 +18,9 @@ const FederalismChart = (props) => {
   const [currKey, setCurrKey] = useState(null);
   const visibleClass = 'visible';
   const animateClass = 'animate';
-  let hasScrolled = false;
+
   const initialView = () => {
     toggleKeys(0);
-  };
-
-  const handleScroll = (e) => {
-    let verticalOffset = window.scrollY;
-    const componentOffset = scrollRef.current.offsetTop;
-    const buffer = 40;
-    if (componentOffset - verticalOffset < buffer && !hasScrolled) {
-      initialView();
-    } else {
-      return;
-    }
-    hasScrolled = true;
   };
 
   const toggleKeys = (key) => {
@@ -48,11 +36,10 @@ const FederalismChart = (props) => {
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    // window.addEventListener('load', initialView);
+    window.addEventListener('load', initialView);
     window.addEventListener('resize', initialView);
     return () => {
-      window.removeEventListener('scroll', setActiveKeys);
+      window.removeEventListener('load', initialView);
       window.removeEventListener('resize', setActiveKeys);
     };
   });
@@ -88,14 +75,14 @@ const FederalismChart = (props) => {
           />
         </Container>
         <Container className="legend-wrap">
-          <h5 className={`mb-5`}>
+          <h5 className="text-center">
             Select Categories Below to Explore the Support the Federal Gov't
             Provides to the States
           </h5>
           <Row className="">
             {keys.map((key, i) => {
               return (
-                <Col className={`key-wrap`} key={key} sm={12} md={6} lg={2}>
+                <Col className="key-wrap" key={key} sm={6} lg={2}>
                   <button
                     key={`k${i}`}
                     data-index={i}
@@ -113,13 +100,11 @@ const FederalismChart = (props) => {
               );
             })}
           </Row>
-          <small className={`source`}>
-            <small className={`text-center`}>
-              Source:{' '}
-              <a href="https://www.whitehouse.gov/omb/historical-tables/">
-                https://www.whitehouse.gov/omb/historical-tables/
-              </a>
-            </small>
+          <small className="source text-center">
+            Source:{' '}
+            <a href="https://www.whitehouse.gov/omb/historical-tables/">
+              Whitehouse Historical Tables
+            </a>
           </small>
         </Container>
       </section>

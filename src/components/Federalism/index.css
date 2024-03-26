@@ -24,6 +24,11 @@
   display: flex;
   margin: 1rem auto;
 }
+@media (max-width: 640px) {
+  .federalism .key-wrap {
+    margin: 0;
+  }
+}
 .federalism .key-wrap button {
   border: none;
   background-color: transparent;
@@ -86,7 +91,10 @@
 .federalism .visible {
   visibility: visible !important;
 }
-.federalism .ct-grid {
+.federalism .ct-grids {
+  overflow: hidden;
+}
+.federalism .ct-grids line {
   stroke: rgba(0, 0, 0, 0.5);
 }
 .federalism .ct-label,
@@ -121,9 +129,14 @@
   opacity: 1;
   transition: opacity 1s linear 1.8s;
 }
+@media (max-width: 640px) {
+  .federalism .ct-series .ct-bar {
+    width: 57px;
+  }
+}
 .federalism .ct-series.animate .ct-bar {
   transform: scaleY(0);
-  transform-origin: 100% 84%;
+  transform-origin: 100% 86.5%;
   animation: draw 1.2s linear forwards;
 }
 .federalism .ct-series-b.animate .ct-bar {

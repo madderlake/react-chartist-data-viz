@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles/styles.css';
 import FederalismChart from './components/Federalism/Federalism';
-import IncomeInequalityChart from './components/IncomeInequality/IncInequality';
+import IncomeInequalityChart from './components/IncomeInequality/IncomeInequality';
 
 const App = () => {
   if (process.env.REACT_APP_BUILD_TARGET === 'inc') {
@@ -12,7 +12,7 @@ const App = () => {
     return (
       <div className="App">
         <header className="App-header">
-          <h1> Cengage Chart Projects 2018 - 2019</h1>
+          <h1> Cengage React Chart Projects</h1>
         </header>
         <IncomeInequalityChart type={`Line`} />
         <FederalismChart type={`Bar`} />
@@ -20,5 +20,5 @@ const App = () => {
     );
   }
 };
-console.log(process.env.REACT_APP_BUILD_TARGET);
+
 export default App;
