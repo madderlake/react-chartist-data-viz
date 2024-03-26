@@ -36,9 +36,9 @@ const Federalism = () => {
     window.addEventListener('resize', initialView);
     return () => {
       window.removeEventListener('load', initialView);
-      window.removeEventListener('resize', setActiveKeys);
+      window.removeEventListener('resize', initialView);
     };
-  }, []);
+  }, [initialView]);
 
   useEffect(() => {
     const els = dataRefs.current;
