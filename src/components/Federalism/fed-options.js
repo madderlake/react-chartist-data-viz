@@ -3,7 +3,6 @@ import { strToNum } from '../utilities/Helpers';
 import ChartistTooltip from 'chartist-plugin-tooltips-updated';
 
 export const onDrawHandler = (data, refs) => {
-  console.log('drawing');
   if (data.type === 'grid' && data.index === 0) {
     data.element.addClass('axis');
   }
@@ -44,8 +43,7 @@ export const onDrawHandler = (data, refs) => {
     }
   }
 
-  if (data.type === 'bar' && data.group._node.classList.contains('ct-series')) {
-    console.log(data.group._node);
+  if (data.type === 'bar') {
     data.group._node.setAttribute(
       'ref',
       (refs.current[data.seriesIndex] = data.group._node)
@@ -57,6 +55,7 @@ export const options = {
   height: 450,
   chartPadding: { top: 80, right: 40, bottom: 0, left: 0 },
   seriesBarDistance: 10,
+  fullWidth: true,
   axisX: {
     offset: 60,
     labelOffset: { x: 0, y: 5 },

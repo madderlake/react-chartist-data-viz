@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
-// import Chart from '../Chart';
-// import { FedChart } from './FedChart';
+
 import { BarChart } from 'chartist';
 import classnames from 'classnames';
 import { data, keys } from './data/federalism-data-proc';
@@ -9,11 +8,11 @@ import { Container, Row, Col } from 'reactstrap';
 import 'chartist/dist/index.css';
 import './index.css';
 
-const Federalism = (props) => {
+const Federalism = () => {
   const dataRefs = useRef([]);
   const scrollRef = useRef();
 
-  const [activeKeys, setActiveKeys] = useState([0]);
+  const [activeKeys, setActiveKeys] = useState([]);
   const [currKey, setCurrKey] = useState(null);
   const visibleClass = 'visible';
   const animateClass = 'animate';
@@ -23,14 +22,12 @@ const Federalism = (props) => {
   };
 
   const toggleKeys = (key) => {
-    if (activeKeys) {
-      if (!activeKeys.includes(key)) {
-        setActiveKeys([...activeKeys, key]);
-        setCurrKey(key);
-      } else {
-        setActiveKeys([...activeKeys].filter((item) => item !== key));
-        setCurrKey(null);
-      }
+    if (!activeKeys.includes(key)) {
+      setActiveKeys([...activeKeys, key]);
+      setCurrKey(key);
+    } else {
+      setActiveKeys([...activeKeys].filter((item) => item !== key));
+      setCurrKey(null);
     }
   };
 
@@ -41,11 +38,10 @@ const Federalism = (props) => {
       window.removeEventListener('load', initialView);
       window.removeEventListener('resize', setActiveKeys);
     };
-  });
+  }, []);
 
   useEffect(() => {
     const els = dataRefs.current;
-    console.log(els);
     els.map((item, i) => {
       return [
         activeKeys.includes(i)
@@ -63,10 +59,9 @@ const Federalism = (props) => {
   const chart = useCallback(() => {
     return new BarChart('#chart', data, options, responsiveOptions);
   }, []);
+
   useEffect(() => {
-    if (chart.current === undefined) return;
-    //chart();
-    chart().on('draw', () => onDrawHandler(data, dataRefs));
+    chart().on('draw', (data) => onDrawHandler(data, dataRefs));
   }, [chart]);
 
   return (
