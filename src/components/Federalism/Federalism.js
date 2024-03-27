@@ -1,16 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react';
-import ChartistGraph from 'react-chartist';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
+
+import { BarChart } from 'chartist';
 import classnames from 'classnames';
 import { data, keys } from './data/federalism-data-proc';
-import {
-  options,
-  responsiveOptions,
-  onDrawHandler,
-} from './federalism-options';
+import { options, responsiveOptions, onDrawHandler } from './fed-options';
 import { Container, Row, Col } from 'reactstrap';
+import 'chartist/dist/index.css';
 import './index.css';
 
-const FederalismChart = (props) => {
+const Federalism = () => {
   const dataRefs = useRef([]);
   const scrollRef = useRef();
 
@@ -19,12 +17,8 @@ const FederalismChart = (props) => {
   const visibleClass = 'visible';
   const animateClass = 'animate';
 
-  const initialView = () => {
-    toggleKeys(0);
-  };
-
-  const toggleKeys = (key) => {
-    if (activeKeys) {
+  const toggleKeys = useCallback(
+    (key) => {
       if (!activeKeys.includes(key)) {
         setActiveKeys([...activeKeys, key]);
         setCurrKey(key);
@@ -32,17 +26,20 @@ const FederalismChart = (props) => {
         setActiveKeys([...activeKeys].filter((item) => item !== key));
         setCurrKey(null);
       }
-    }
-  };
+    },
+    [activeKeys]
+  );
+
+  const initialView = useCallback(() => {
+    toggleKeys(0);
+  }, [toggleKeys]);
 
   useEffect(() => {
     window.addEventListener('load', initialView);
-    window.addEventListener('resize', initialView);
     return () => {
       window.removeEventListener('load', initialView);
-      window.removeEventListener('resize', setActiveKeys);
     };
-  });
+  }, [initialView]);
 
   useEffect(() => {
     const els = dataRefs.current;
@@ -60,19 +57,20 @@ const FederalismChart = (props) => {
     });
   }, [activeKeys, currKey]);
 
+  const chartBar = useCallback(() => {
+    return new BarChart('#chart-bar', data, options, responsiveOptions);
+  }, []);
+
+  useEffect(() => {
+    chartBar().on('draw', (data) => onDrawHandler(data, dataRefs));
+  }, [chartBar]);
+
   return (
     <div className={`federalism`} ref={scrollRef}>
       <section>
         <Container>
           <h2 className={`text-center py-2`}> Federal Support for States</h2>
-
-          <ChartistGraph
-            data={data}
-            options={options}
-            responsiveOptions={responsiveOptions}
-            type={props.type}
-            listener={{ draw: (e) => onDrawHandler(e, dataRefs) }}
-          />
+          <div id="chart-bar" ref={chartBar}></div>
         </Container>
         <Container className="legend-wrap">
           <h5 className="text-center">
@@ -112,4 +110,4 @@ const FederalismChart = (props) => {
   );
 };
 
-export default FederalismChart;
+export default Federalism;

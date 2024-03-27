@@ -1,21 +1,26 @@
-import React, { useRef, useState, useEffect } from 'react';
-import ChartistGraph from 'react-chartist';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
+import { LineChart } from 'chartist';
 import classnames from 'classnames';
 import { data, keys } from './data/inc-ineq-data-proc';
-import {
-  options,
-  responsiveOptions,
-  onDrawHandler,
-} from './incomeinequality-options';
+import { options, responsiveOptions, onDrawHandler } from './inc-options';
 import { Container, Row } from 'reactstrap';
+import 'chartist/dist/index.css';
 import './index.css';
-
-const IncomeInequalityChart = (props) => {
+console.log(data);
+const IncomeInequality = (props) => {
   const dataRefs = useRef([]);
   const [activeKeys, setActiveKeys] = useState([]);
   const [currKey, setCurrKey] = useState(null);
   const visibleClass = 'visible';
   const animateClass = 'animate';
+
+  const chartLine = useCallback(() => {
+    return new LineChart('#chart-line', data, options, responsiveOptions);
+  }, []);
+
+  useEffect(() => {
+    chartLine().on('draw', (data) => onDrawHandler(data, dataRefs));
+  }, [chartLine]);
 
   const toggleKeys = (key) => {
     if (!activeKeys.includes(key)) {
@@ -39,6 +44,7 @@ const IncomeInequalityChart = (props) => {
       window.removeEventListener('load', initialView);
     };
   });
+
   useEffect(() => {
     const els = dataRefs.current;
     els.map((item, i) => {
@@ -63,15 +69,7 @@ const IncomeInequalityChart = (props) => {
             {' '}
             Income Inequality in the U.S.A 1991 - 2013
           </h2>
-          <ChartistGraph
-            data={data}
-            options={options}
-            responsiveOptions={responsiveOptions}
-            type={props.type}
-            listener={{
-              draw: (e) => onDrawHandler(e, dataRefs),
-            }}
-          />
+          <div id="chart-line" ref={chartLine}></div>
         </Container>
         <Container className="legend-wrap">
           <Row className="justify-content-between">
@@ -100,4 +98,4 @@ const IncomeInequalityChart = (props) => {
     </div>
   );
 };
-export default IncomeInequalityChart;
+export default IncomeInequality;
