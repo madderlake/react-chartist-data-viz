@@ -113,14 +113,19 @@
 .federalism .ct-label-top {
   font-size: 0.75rem;
 }
-.federalism .ct-arrow,
-.federalism .ct-label-top {
+.federalism .ct-series .ct-arrow,
+.federalism .ct-series .ct-label-top {
   opacity: 0;
   transition: 1s fill-opacity;
 }
 .federalism .ct-series.animate .ct-arrow,
 .federalism .ct-series.animate .ct-label-top {
   opacity: 1;
+  transition: opacity 1s linear 1.5s;
+}
+.federalism .ct-series.visible .ct-arrow,
+.federalism .ct-series.visible .ct-label-top {
+  opacity: 1 !important;
   transition: opacity 1s linear 1.5s;
 }
 @media (max-width: 640px) {
@@ -134,7 +139,7 @@
   animation: draw 1.5s linear forwards;
 }
 .federalism .ct-series-b.animate .ct-bar {
-  animation: draw 1s linear forwards;
+  animation: draw 0.5s linear forwards;
 }
 @keyframes draw {
   to {
