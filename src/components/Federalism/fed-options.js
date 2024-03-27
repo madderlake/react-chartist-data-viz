@@ -1,6 +1,6 @@
 import { getMultiValue, Svg, FixedScaleAxis } from 'chartist';
 import { strToNum } from '../utilities/Helpers';
-import ChartistTooltip from 'chartist-plugin-tooltips-updated';
+// import ChartistTooltip from 'chartist-plugin-tooltips-updated';
 
 export const onDrawHandler = (data, refs) => {
   if (data.type === 'grid' && data.index === 0) {
@@ -48,6 +48,9 @@ export const onDrawHandler = (data, refs) => {
       'ref',
       (refs.current[data.seriesIndex] = data.group._node)
     );
+    if (data.group._node.classList.contains('ct-series-a')) {
+      data.group._node.classList.add('visible', 'animate');
+    }
   }
 };
 export const options = {
@@ -76,7 +79,7 @@ export const options = {
     type: FixedScaleAxis,
     high: 150000,
     low: 0,
-    ticks: [0, 25000, 50000, 75000, 100000, 125000],
+    ticks: [0, 25000, 50000, 75000, 100000, 125000, 150000],
   },
   // plugins: [
   //   ChartistTooltip({

@@ -1,20 +1,21 @@
-import { addCommas } from '../utilities/Helpers';
 import { FixedScaleAxis } from 'chartist';
 export const options = {
   width: '100%',
-  height: 320,
+  height: 400,
   chartPadding: { top: 20, right: 0, bottom: 0, left: 0 },
   lineSmooth: false,
+  fullWidth: true,
   axisX: { offset: 60, onlyInteger: false },
   axisY: {
     offset: 80,
     labelInterpolationFnc: function (value) {
-      return addCommas(value);
+      return '$' + value / 1000 + 'K';
     },
     labelOffset: { x: -10, y: 8 },
     type: FixedScaleAxis,
-    high: 150000,
+    high: 155000,
     low: 0,
+    ticks: [0, 25000, 50000, 75000, 100000, 125000, 155000],
   },
 };
 export const responsiveOptions = [

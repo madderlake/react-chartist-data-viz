@@ -56,20 +56,20 @@ const Federalism = () => {
     });
   }, [activeKeys, currKey]);
 
-  const chart = useCallback(() => {
-    return new BarChart('#chart', data, options, responsiveOptions);
+  const chartBar = useCallback(() => {
+    return new BarChart('#chart-bar', data, options, responsiveOptions);
   }, []);
 
   useEffect(() => {
-    chart().on('draw', (data) => onDrawHandler(data, dataRefs));
-  }, [chart]);
+    chartBar().on('draw', (data) => onDrawHandler(data, dataRefs));
+  }, [chartBar]);
 
   return (
     <div className={`federalism`} ref={scrollRef}>
       <section>
         <Container>
           <h2 className={`text-center py-2`}> Federal Support for States</h2>
-          <div id="chart" ref={chart}></div>
+          <div id="chart-bar" ref={chartBar}></div>
         </Container>
         <Container className="legend-wrap">
           <h5 className="text-center">
