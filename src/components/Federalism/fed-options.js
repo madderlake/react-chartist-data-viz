@@ -48,11 +48,10 @@ export const onDrawHandler = (data, refs) => {
       'ref',
       (refs.current[data.seriesIndex] = data.group._node)
     );
-    if (data.group._node.classList.contains('ct-series-a')) {
-      data.group._node.classList.add('visible', 'animate');
-    }
   }
 };
+
+/* OPTIONS */
 export const options = {
   width: '100%',
   height: 450,

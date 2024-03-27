@@ -17,26 +17,27 @@ const Federalism = () => {
   const visibleClass = 'visible';
   const animateClass = 'animate';
 
-  const initialView = () => {
-    toggleKeys(0);
-  };
+  const toggleKeys = useCallback(
+    (key) => {
+      if (!activeKeys.includes(key)) {
+        setActiveKeys([...activeKeys, key]);
+        setCurrKey(key);
+      } else {
+        setActiveKeys([...activeKeys].filter((item) => item !== key));
+        setCurrKey(null);
+      }
+    },
+    [activeKeys]
+  );
 
-  const toggleKeys = (key) => {
-    if (!activeKeys.includes(key)) {
-      setActiveKeys([...activeKeys, key]);
-      setCurrKey(key);
-    } else {
-      setActiveKeys([...activeKeys].filter((item) => item !== key));
-      setCurrKey(null);
-    }
-  };
+  const initialView = useCallback(() => {
+    toggleKeys(0);
+  }, [toggleKeys]);
 
   useEffect(() => {
     window.addEventListener('load', initialView);
-    window.addEventListener('resize', initialView);
     return () => {
       window.removeEventListener('load', initialView);
-      window.removeEventListener('resize', initialView);
     };
   }, [initialView]);
 
