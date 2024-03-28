@@ -1,4 +1,4 @@
-# Cengage Data Projects 2018 - 2019
+# Cengage Data Projects
 
 ## The Problem
 
