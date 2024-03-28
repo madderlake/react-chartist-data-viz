@@ -8,16 +8,16 @@ Because the internal creative team had been largely focused on print for many ye
 
 ## The Solution
 
-After some research, I decided to use a charting application - Chartist - that was compatible (output in svg - not canvas, and lightweight) with the Cengage learning platform. It is based on, albeit a subset of d3.js.
+After some research, I decided to use an application Chartist. The fact that it renders regular SVG elements and uses regular CSS and Javascript (as opposed to using canvas) made it compatible with the Cengage learning platform. It is a subset of d3.js, which means it is lightweight.
 
-The data was converted from csv to json, using a converter, and processed with javascript to be organized as required by Chartist.
+The data was converted from csv to json and processed to be organized into `labels` and `series`, the only data requirement by Chartist.
 
-Originally these were delivered as html, css and JS, but later I began to convert them to React components. Currently, I am updating them to use functional components, hooks, and refs.
-### Demo
+These were originally developed as javascript applications, and subsequently converted to React components. 
+
+### Deployment
 https://chartist-react-projects.netlify.app/
 
 ### TO DO's
-
-- Add refs to generated svg elements, replacing vanilla js
-- Update design :)
+- ~Update to latest version of Chartist~
+- ~Eliminate outdated libraries (react-chartist)~
 - ...More charts
