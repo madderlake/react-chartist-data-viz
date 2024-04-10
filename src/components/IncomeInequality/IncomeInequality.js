@@ -67,7 +67,7 @@ const IncomeInequality = (props) => {
         <Container>
           <h2 className={`text-center py-2`}>
             {' '}
-            Income Inequality in the U.S.A 1991 - 2013
+            Income Levels by Race in the U.S.A 1991 - 2013
           </h2>
           <div id="chart-line" ref={chartLine}></div>
         </Container>
