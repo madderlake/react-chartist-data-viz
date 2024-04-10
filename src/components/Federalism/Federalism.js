@@ -79,8 +79,9 @@ const Federalism = () => {
           </h5>
           <Row className="">
             {keys.map((key, i) => {
+              const shortKey = key.split(' ')[0];
               return (
-                <Col className="key-wrap" key={key} sm={6} lg={2}>
+                <Col className="key-wrap" key={key} sm={4} lg={3}>
                   <button
                     key={`k${i}`}
                     data-index={i}
@@ -92,7 +93,7 @@ const Federalism = () => {
                         activeKeys.includes(i) ? 'on' : ''
                       )}
                       key={`${i}`}></i>
-                    {key}
+                    {shortKey}
                   </button>
                 </Col>
               );

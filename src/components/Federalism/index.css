@@ -24,7 +24,6 @@
 }
 .federalism .key-wrap {
   display: flex;
-  margin: 1rem auto;
 }
 @media (max-width: 640px) {
   .federalism .key-wrap {
@@ -40,6 +39,7 @@
   appearance: none;
   outline: none;
   padding: 0;
+  margin-bottom: 0.5rem;
 }
 .federalism .key-wrap button i {
   display: block;
