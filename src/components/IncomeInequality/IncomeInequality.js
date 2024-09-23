@@ -3,11 +3,11 @@ import { LineChart } from 'chartist';
 import classnames from 'classnames';
 import { data, keys } from './data/inc-ineq-data-proc';
 import { options, responsiveOptions, onDrawHandler } from './inc-options';
-import { Container, Row } from 'reactstrap';
+import { Container } from 'reactstrap';
 import 'chartist/dist/index.css';
 import './index.css';
-console.log(data);
-const IncomeInequality = (props) => {
+
+const IncomeInequality = () => {
   const dataRefs = useRef([]);
   const [activeKeys, setActiveKeys] = useState([]);
   const [currKey, setCurrKey] = useState(null);
@@ -71,8 +71,12 @@ const IncomeInequality = (props) => {
           </h2>
           <div id="chart-line" ref={chartLine}></div>
         </Container>
-        <Container className="legend-wrap">
-          <Row className="justify-content-between">
+        <div
+          className="legend-wrap"
+          style={{ display: 'flex', justifyContent: 'center' }}>
+          <div
+            className="inline-flex"
+            style={{ display: 'inline-flex', gap: 60 }}>
             {keys.map((key, i) => {
               return (
                 <div
@@ -92,8 +96,8 @@ const IncomeInequality = (props) => {
                 </div>
               );
             })}
-          </Row>
-        </Container>
+          </div>
+        </div>
       </section>
     </div>
   );
